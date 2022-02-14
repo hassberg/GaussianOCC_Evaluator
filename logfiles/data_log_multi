@@ -1,0 +1,1328 @@
+{
+"VarianceBasedSelectionBP0" : {
+"data_blackboard" : [{
+"query_candidates" : [43],
+"actual_queries" : [[1.5042994126695768, 1.684966088717444]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [67],
+"actual_queries" : [[-0.03780211882555262, -2.5673614949223267]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [116],
+"actual_queries" : [[-1.6039698064417491, 0.07295614876663814]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [77],
+"actual_queries" : [[-0.6065076248361458, 3.5450777456155134]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [106],
+"actual_queries" : [[-2.842285623283294, -3.435358901508402]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [90],
+"actual_queries" : [[1.9642243300660773, -1.0094850929785442]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [32],
+"actual_queries" : [[2.2345146687645148, 0.8512311525571497]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [54],
+"actual_queries" : [[1.188824028442958, 2.6485448153503706]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [84],
+"actual_queries" : [[-0.056262786536949605, -1.488891481810286]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [108],
+"actual_queries" : [[-3.3151017538555205, -0.8632287700718857]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [98],
+"actual_queries" : [[-0.8822908403188262, -2.3812743369576057]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [113],
+"actual_queries" : [[-2.721073390761058, 0.5664608743225061]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [41],
+"actual_queries" : [[1.6194805622410824, -1.5832393784717107]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [112],
+"actual_queries" : [[-2.929405010988903, -2.339080931794894]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [20],
+"actual_queries" : [[-0.886266792681044, 4.045883227704008]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [16],
+"actual_queries" : [[0.398357224958918, -2.603819008164425]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [110],
+"actual_queries" : [[-2.3477845087999847, -3.6290709357701845]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [108],
+"actual_queries" : [[-3.3151017538555205, -0.8632287700718857]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [107],
+"actual_queries" : [[-3.434031819557794, -3.096888863422012]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [32],
+"actual_queries" : [[2.2345146687645148, 0.8512311525571497]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [13],
+"actual_queries" : [[-0.30845452880760127, 2.935666708882416]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [114],
+"actual_queries" : [[-2.413367360980262, -4.096184359588514]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [42],
+"actual_queries" : [[1.5011515094068923, 0.995029675701322]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [80],
+"actual_queries" : [[0.41034725200070477, 3.297001337950461]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [102],
+"actual_queries" : [[-2.027670578871176, 0.7585824434512829]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [21],
+"actual_queries" : [[1.1554065524958275, -0.9547904418298807]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [100],
+"actual_queries" : [[-0.37745425067771654, -4.487619332173093]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [76],
+"actual_queries" : [[2.1815376723614133, -1.3238428981555477]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [87],
+"actual_queries" : [[1.7910417576346926, -0.1152757968724476]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [55],
+"actual_queries" : [[0.8500269333846555, -2.527847228226549]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+}],
+"surrogate_blackboard" : [],
+"evaluations" : {
+"RoundCounterEvaluator" : 30,
+"ModelEvaluator" : [],
+"ActiveLearningCurveEvaluator" : {
+"BasicActiveLearningCurveMetric" : [0.8666666666666667, 0.8416666666666667, 0.8416666666666667, 0.8416666666666667, 0.8416666666666667, 0.8416666666666667, 0.8416666666666667, 0.8416666666666667, 0.8416666666666667, 0.8416666666666667, 0.8416666666666667, 0.9166666666666666, 0.9833333333333333, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+}
+
+}
+},
+"VarianceBasedSelectionBP1" : {
+"data_blackboard" : [{
+"query_candidates" : [23],
+"actual_queries" : [[-1.1898729398271117, 3.861313559207673]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [115],
+"actual_queries" : [[-2.6339633483959135, -1.08105857236759]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [67],
+"actual_queries" : [[2.2736421540251537, 0.05964661178231723]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [33],
+"actual_queries" : [[1.1022620869446844, -1.244488173120384]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [112],
+"actual_queries" : [[-2.244155174759592, -4.220375953198049]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [12],
+"actual_queries" : [[1.106780604021993, 2.516359547481369]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [4],
+"actual_queries" : [[-0.48259974078350676, -2.1552201083877183]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [119],
+"actual_queries" : [[-2.084676628190712, -0.2150854180008679]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [49],
+"actual_queries" : [[-0.04483758022141071, 3.753523209016836]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [20],
+"actual_queries" : [[2.4390346745180977, 1.5622661302848495]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [116],
+"actual_queries" : [[-1.853350857938402, -4.71970683718442]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [73],
+"actual_queries" : [[1.265315552522417, 3.0372211552509123]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [54],
+"actual_queries" : [[-0.1419623372957386, -2.2979395683538555]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [65],
+"actual_queries" : [[-0.9002116176060136, 3.015155661394125]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [90],
+"actual_queries" : [[1.489221900621776, 3.3654540652060927]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [107],
+"actual_queries" : [[-0.56471324773955, 1.611906000111957]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [51],
+"actual_queries" : [[2.66775996380468, 0.7366271604687834]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [108],
+"actual_queries" : [[-1.7761112555262946, 1.1483846230016557]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [117],
+"actual_queries" : [[-2.9649909241643364, 0.2859526791550495]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [41],
+"actual_queries" : [[1.7137540010832546, -1.6978139272996289]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [35],
+"actual_queries" : [[0.5223500540103729, -2.4790204647950893]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [13],
+"actual_queries" : [[1.6032679588648597, 0.22985547291813102]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [109],
+"actual_queries" : [[-3.103909185637523, -3.417019915052992]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [20],
+"actual_queries" : [[2.4390346745180977, 1.5622661302848495]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [114],
+"actual_queries" : [[-3.1156714114598083, 0.05426029923045883]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [97],
+"actual_queries" : [[-0.8073087796701799, -1.916513700603489]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [44],
+"actual_queries" : [[0.30508473326161534, -1.3954682209011537]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [111],
+"actual_queries" : [[-1.5174014957501427, -4.225326505208891]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [23],
+"actual_queries" : [[-1.1898729398271117, 3.861313559207673]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [113],
+"actual_queries" : [[-3.279334836586407, -0.8973866419876493]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+}],
+"surrogate_blackboard" : [],
+"evaluations" : {
+"RoundCounterEvaluator" : 30,
+"ModelEvaluator" : [],
+"ActiveLearningCurveEvaluator" : {
+"BasicActiveLearningCurveMetric" : [0.8416666666666667, 0.8166666666666667, 0.825, 0.825, 0.825, 0.8416666666666667, 0.8583333333333333, 0.8583333333333333, 0.8666666666666667, 0.9083333333333333, 0.9416666666666667, 0.9416666666666667, 0.9416666666666667, 0.9583333333333334, 0.9583333333333334, 0.9583333333333334, 0.9583333333333334, 0.9583333333333334, 0.9833333333333333, 0.9833333333333333, 0.9833333333333333, 0.9833333333333333, 0.9833333333333333, 0.9833333333333333, 0.9833333333333333, 0.9833333333333333, 0.9833333333333333, 0.9916666666666667, 0.9833333333333333, 0.9833333333333333, 0.9833333333333333]
+}
+
+}
+},
+"MeanBasedSelectionBP0" : {
+"data_blackboard" : [{
+"query_candidates" : [31],
+"actual_queries" : [[2.1851844404315615, -1.0070283908192528]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [83],
+"actual_queries" : [[1.0351109150394118, 2.448231384116821]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [60],
+"actual_queries" : [[1.8685468956440436, 1.0929163115430203]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [8],
+"actual_queries" : [[1.7193915464179401, -1.4960759766723202]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [99],
+"actual_queries" : [[-0.9600252546141054, -2.019290702819711]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [43],
+"actual_queries" : [[1.0797995514809196, -0.7168179023884671]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [8],
+"actual_queries" : [[1.7193915464179401, -1.4960759766723202]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [47],
+"actual_queries" : [[0.9285404350470583, 3.20558625022433]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [115],
+"actual_queries" : [[-1.1445350713430482, -4.429156293619174]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [116],
+"actual_queries" : [[-3.226812062566365, -1.975106277382624]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [82],
+"actual_queries" : [[2.6158075354199823, 0.7911541327514735]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [73],
+"actual_queries" : [[0.35968508555595635, 2.9315509559657693]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [112],
+"actual_queries" : [[-2.6252931220061084, -2.8215379463813397]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [112],
+"actual_queries" : [[-2.6252931220061084, -2.8215379463813397]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [47],
+"actual_queries" : [[0.9285404350470583, 3.20558625022433]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [118],
+"actual_queries" : [[-2.778868405080008, -0.7179850810490589]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [101],
+"actual_queries" : [[-2.3187982814594426, 0.9043592023113769]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [106],
+"actual_queries" : [[-1.3298613793247256, 0.6730807773130767]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [65],
+"actual_queries" : [[0.5543134311609759, -1.260876610992613]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [20],
+"actual_queries" : [[1.1776549922113055, -0.568344971077839]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [82],
+"actual_queries" : [[2.6158075354199823, 0.7911541327514735]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [73],
+"actual_queries" : [[0.35968508555595635, 2.9315509559657693]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [1],
+"actual_queries" : [[0.05705205762906873, 3.7986454966931213]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [114],
+"actual_queries" : [[-1.285986378425319, 1.1445045821671203]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [109],
+"actual_queries" : [[-0.8953036973218986, 0.6389660249886031]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [75],
+"actual_queries" : [[-0.26270043305291546, 2.80430193979876]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [20],
+"actual_queries" : [[1.1776549922113055, -0.568344971077839]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [109],
+"actual_queries" : [[-0.8953036973218986, 0.6389660249886031]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [103],
+"actual_queries" : [[-0.9929307863469252, 1.5801956070806376]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [108],
+"actual_queries" : [[-2.6236821756042907, -2.636534288140009]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+}],
+"surrogate_blackboard" : [],
+"evaluations" : {
+"RoundCounterEvaluator" : 30,
+"ModelEvaluator" : [],
+"ActiveLearningCurveEvaluator" : {
+"BasicActiveLearningCurveMetric" : [0.8083333333333333, 0.8166666666666667, 0.8166666666666667, 0.825, 0.825, 0.825, 0.8333333333333334, 0.8333333333333334, 0.825, 0.85, 0.9333333333333333, 0.9416666666666667, 0.9416666666666667, 0.9416666666666667, 0.9416666666666667, 0.9416666666666667, 0.9666666666666667, 0.9833333333333333, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+}
+
+}
+},
+"MeanBasedSelectionBP1" : {
+"data_blackboard" : [{
+"query_candidates" : [42],
+"actual_queries" : [[2.1532605231309887, -0.6570943423039971]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [118],
+"actual_queries" : [[-3.8403571365960705, -1.6811395885654856]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [110],
+"actual_queries" : [[-2.8278354636248366, -3.033573983862704]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [112],
+"actual_queries" : [[-1.6971739652287874, 1.1258926274802676]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [12],
+"actual_queries" : [[-0.9648738639442944, 3.2400764161940554]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [114],
+"actual_queries" : [[-2.170706358682929, -4.82723405809205]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [109],
+"actual_queries" : [[-0.8032096056946072, 1.0349340617993592]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [71],
+"actual_queries" : [[2.58897556259297, 1.2011239185502647]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [116],
+"actual_queries" : [[-1.215718622951814, 1.2670019589054275]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [63],
+"actual_queries" : [[1.607879570737187, -2.0156786689309008]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [76],
+"actual_queries" : [[0.7865061813785825, -1.379241026790806]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [115],
+"actual_queries" : [[-2.195724397985544, -3.1083603422059496]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [100],
+"actual_queries" : [[-3.3196322665100464, -1.221708802328382]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [15],
+"actual_queries" : [[1.3000695882903344, 2.6049322150762277]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [63],
+"actual_queries" : [[1.607879570737187, -2.0156786689309008]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [22],
+"actual_queries" : [[0.5408529755399805, -1.9925859378594395]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [88],
+"actual_queries" : [[-0.7113657326127361, -2.341758458924507]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [104],
+"actual_queries" : [[-2.3371676115158975, -3.4759564157507743]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [90],
+"actual_queries" : [[0.7522426289284945, -1.2280028993118675]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [106],
+"actual_queries" : [[-3.2373478680453616, -2.9175212441693223]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [82],
+"actual_queries" : [[-0.6083283647188028, 3.0247228089933307]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [119],
+"actual_queries" : [[-2.8027357277698943, -0.08813855807816484]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [63],
+"actual_queries" : [[1.607879570737187, -2.0156786689309008]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [30],
+"actual_queries" : [[-0.44217913967451716, 3.428665904606896]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [107],
+"actual_queries" : [[-0.8307830162382794, 1.3905472875512221]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [117],
+"actual_queries" : [[-3.2005413492872075, -2.7254157240741446]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [82],
+"actual_queries" : [[-0.6083283647188028, 3.0247228089933307]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [15],
+"actual_queries" : [[1.3000695882903344, 2.6049322150762277]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [13],
+"actual_queries" : [[1.3830483105639773, 1.710947861504221]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [100],
+"actual_queries" : [[-3.3196322665100464, -1.221708802328382]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+}],
+"surrogate_blackboard" : [],
+"evaluations" : {
+"RoundCounterEvaluator" : 30,
+"ModelEvaluator" : [],
+"ActiveLearningCurveEvaluator" : {
+"BasicActiveLearningCurveMetric" : [0.7166666666666667, 0.7333333333333333, 0.7416666666666667, 0.75, 0.75, 0.7666666666666667, 0.8166666666666667, 0.8583333333333333, 0.8916666666666667, 0.925, 0.9666666666666667, 0.975, 0.9833333333333333, 0.9833333333333333, 0.9833333333333333, 0.9833333333333333, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+}
+
+}
+},
+"UncertaintyBasedSelectionBP0" : {
+"data_blackboard" : [{
+"query_candidates" : [58],
+"actual_queries" : [[1.7720753941806415, -1.3145738710583665]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [4],
+"actual_queries" : [[2.643209778090905, 1.2624574591761661]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [34],
+"actual_queries" : [[0.8740254898058515, 3.673788168292022]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [70],
+"actual_queries" : [[2.4967950138951682, 1.7910468336758134]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [86],
+"actual_queries" : [[2.6217000127727275, -0.16966695044743277]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [100],
+"actual_queries" : [[-1.7698021486153226, 0.08098466931064463]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [38],
+"actual_queries" : [[-0.9214732123797187, -1.9192126440968247]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [99],
+"actual_queries" : [[1.3142395407888747, -1.3532515949641692]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [103],
+"actual_queries" : [[-3.0394483508286214, -0.4488957232753126]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [107],
+"actual_queries" : [[-3.3126545741139104, -1.6722090626892934]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [111],
+"actual_queries" : [[-2.5261563210896174, -3.5427277507991812]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [101],
+"actual_queries" : [[-2.7772222054962175, -4.574759377368923]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [47],
+"actual_queries" : [[-0.9200604103859514, 3.2131767118919656]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [48],
+"actual_queries" : [[0.279245326404276, -1.7075678715621283]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [18],
+"actual_queries" : [[-1.3622787136925116, -2.1067192479447123]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [97],
+"actual_queries" : [[1.3049091859729849, -1.4242863387805558]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [18],
+"actual_queries" : [[-1.3622787136925116, -2.1067192479447123]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [107],
+"actual_queries" : [[-3.3126545741139104, -1.6722090626892934]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [18],
+"actual_queries" : [[-1.3622787136925116, -2.1067192479447123]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [85],
+"actual_queries" : [[0.11420264401957647, 3.6598953887605026]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [101],
+"actual_queries" : [[-2.7772222054962175, -4.574759377368923]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [97],
+"actual_queries" : [[1.3049091859729849, -1.4242863387805558]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [114],
+"actual_queries" : [[-2.603391312106961, -3.843854108252288]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [119],
+"actual_queries" : [[-0.8465065383956007, 0.48989253444950265]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [117],
+"actual_queries" : [[-2.991732541966483, -3.9976902924211286]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [60],
+"actual_queries" : [[1.7977952839237434, 1.966285027628285]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [102],
+"actual_queries" : [[-2.934588490437682, -1.2898677077895584]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [116],
+"actual_queries" : [[-2.2596756325138543, -3.1079911377064415]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [102],
+"actual_queries" : [[-2.934588490437682, -1.2898677077895584]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [60],
+"actual_queries" : [[1.7977952839237434, 1.966285027628285]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+}],
+"surrogate_blackboard" : [],
+"evaluations" : {
+"RoundCounterEvaluator" : 30,
+"ModelEvaluator" : [],
+"ActiveLearningCurveEvaluator" : {
+"BasicActiveLearningCurveMetric" : [0.8, 0.7916666666666666, 0.8, 0.8166666666666667, 0.8166666666666667, 0.8166666666666667, 0.8083333333333333, 0.825, 0.8416666666666667, 0.9083333333333333, 0.9166666666666666, 0.9666666666666667, 0.975, 0.975, 0.9916666666666667, 0.975, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
+}
+
+}
+},
+"UncertaintyBasedSelectionBP1" : {
+"data_blackboard" : [{
+"query_candidates" : [10],
+"actual_queries" : [[-0.5890055161869756, 3.1891499469898297]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [88],
+"actual_queries" : [[1.4534987860724122, 2.472196843629689]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [55],
+"actual_queries" : [[2.2690320680292855, 1.518064641761196]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [99],
+"actual_queries" : [[1.233564188439824, 1.6595886156448643]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [114],
+"actual_queries" : [[-3.3062849703843042, -2.4050677328876087]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [60],
+"actual_queries" : [[0.1972952223317943, -1.558335716780996]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [99],
+"actual_queries" : [[1.233564188439824, 1.6595886156448643]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [107],
+"actual_queries" : [[-2.710879824587199, -4.20923648411107]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [26],
+"actual_queries" : [[-0.38516923244881385, -2.8968925985009646]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [107],
+"actual_queries" : [[-2.710879824587199, -4.20923648411107]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [112],
+"actual_queries" : [[-3.652112482080444, -2.7229324726213497]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [108],
+"actual_queries" : [[-2.2217151413879206, -4.375387594177445]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [22],
+"actual_queries" : [[2.5158489427893818, 0.13451377174239665]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [102],
+"actual_queries" : [[-1.1775218998923505, -5.054910080571791]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [110],
+"actual_queries" : [[-3.1100158307624337, -0.326400677853774]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [81],
+"actual_queries" : [[1.2692903565793197, -2.1653066406149932]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [73],
+"actual_queries" : [[-0.4575312505832818, -2.4996372959897437]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [105],
+"actual_queries" : [[-2.56288170997089, -0.3025326216022961]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [97],
+"actual_queries" : [[-0.2145531079875318, -1.8710617635163107]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [10],
+"actual_queries" : [[-0.5890055161869756, 3.1891499469898297]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [18],
+"actual_queries" : [[0.13630805826792614, 3.1261452347505077]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [84],
+"actual_queries" : [[-1.063247785759357, 3.892118171894251]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [65],
+"actual_queries" : [[1.4353752854177975, 3.1056731038289174]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [118],
+"actual_queries" : [[-2.4025108387919722, 1.0708841113544878]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [47],
+"actual_queries" : [[-0.8109708988683987, -2.751127125315031]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [86],
+"actual_queries" : [[1.6422757087719835, 3.378676833282241]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [84],
+"actual_queries" : [[-1.063247785759357, 3.892118171894251]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [111],
+"actual_queries" : [[-0.8483005520663034, 1.0374075810050685]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [52],
+"actual_queries" : [[0.25523192058362243, -2.5009084372485493]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [116],
+"actual_queries" : [[-0.015874834622291445, 1.1702248057914746]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+}],
+"surrogate_blackboard" : [],
+"evaluations" : {
+"RoundCounterEvaluator" : 30,
+"ModelEvaluator" : [],
+"ActiveLearningCurveEvaluator" : {
+"BasicActiveLearningCurveMetric" : [0.7833333333333333, 0.8, 0.8, 0.8, 0.8083333333333333, 0.8333333333333334, 0.85, 0.85, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9, 0.9333333333333333, 0.95, 0.95, 0.95, 0.95, 0.95, 0.95, 0.95, 0.95, 0.9583333333333334, 0.9583333333333334, 0.9583333333333334, 0.9583333333333334, 0.975, 0.975, 1.0]
+}
+
+}
+}
+}
