@@ -24,7 +24,7 @@ class LearningStabilityMeasure(LogfileEvaluationMetric):
                     if value[0][len(value[0]) - 1] - value[0][0] > 0:
                         data.append(np.divide(
                             np.divide((value[0][len(value[0]) - 1] - value[0][len(value[0]) - self.k - 1]), self.k),
-                            np.divide((value[0][len(value[0]) - 1] - value[0][0]), len(value[0]) - 1)))
+                            np.divide((value[0][len(value[0]) - 1] - value[0][0]), len(value[0]))))
                     else:
                         data.append(0)
 

@@ -7,7 +7,7 @@ class LogEvaluator:
         self.metrics = metrics
         self.logs = logs
 
-    def evaluate(self):
-        with PdfPages('evaluation.pdf') as pdf:
+    def evaluate(self, file_name: str):
+        with PdfPages(file_name + '.pdf') as pdf:
             for metric in self.metrics:
                 metric.apply(self.logs, pdf)

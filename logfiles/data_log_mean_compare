@@ -1,0 +1,376 @@
+{
+"CustomPriorBP0" : {
+"data_blackboard" : [{
+"query_candidates" : [109],
+"actual_queries" : [[-0.46413187422309354, 1.1900371701370531]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [58],
+"actual_queries" : [[1.3350092629479633, -0.43033326653904114]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [38],
+"actual_queries" : [[-1.1434768498043295, 3.756553379888073]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [65],
+"actual_queries" : [[2.013078831799296, -1.5405003637643497]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [105],
+"actual_queries" : [[-1.3771972739037852, -4.3960230900793835]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [114],
+"actual_queries" : [[-0.802915019952064, -4.753918815790451]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [69],
+"actual_queries" : [[1.0257477258605388, -1.518630835926837]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [9],
+"actual_queries" : [[1.7630250680914985, 1.2929069171483674]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [88],
+"actual_queries" : [[1.6284154161995081, 3.110559454835688]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [4],
+"actual_queries" : [[1.1610352387043132, 2.085896149521682]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [116],
+"actual_queries" : [[-3.3709770821517164, -2.4205027505801153]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [115],
+"actual_queries" : [[-2.0401770654723297, 0.15399254957062114]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [107],
+"actual_queries" : [[-3.6141250482761595, -1.5274632020282355]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [99],
+"actual_queries" : [[1.5460605986046243, -1.5150415135935036]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [110],
+"actual_queries" : [[-2.6197535393345897, -2.602335657852633]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [1],
+"actual_queries" : [[-0.2608442961402988, -2.1007629831981807]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [13],
+"actual_queries" : [[0.5541174584401953, 2.5137864025584475]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [119],
+"actual_queries" : [[-2.3914071711393556, -4.736406433087998]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [108],
+"actual_queries" : [[-2.4190749354023815, 0.8158596334430541]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [111],
+"actual_queries" : [[-0.4379568617749541, 0.7595023014557518]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [103],
+"actual_queries" : [[-3.686290506274135, -1.7508798643882864]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [104],
+"actual_queries" : [[-0.8074761408445328, -4.902990764123334]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [13],
+"actual_queries" : [[0.5541174584401953, 2.5137864025584475]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [77],
+"actual_queries" : [[1.6462740795290092, 0.46637959680266494]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [112],
+"actual_queries" : [[-2.8603074920918274, -3.571194389857969]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+}],
+"surrogate_blackboard" : [],
+"evaluations" : {
+"RoundCounterEvaluator" : 25,
+"ModelEvaluator" : [],
+"ActiveLearningCurveEvaluator" : {
+"BasicActiveLearningCurveMetric" : [0.825, 0.8166666666666667, 0.8166666666666667, 0.8166666666666667, 0.8166666666666667, 0.825, 0.85, 0.8583333333333333, 0.8583333333333333, 0.8666666666666667, 0.8666666666666667, 0.975, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667, 0.9916666666666667],
+"CertaintyReachedMetric" : [0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+}
+
+}
+},
+"ConstantPriorBP0" : {
+"data_blackboard" : [{
+"query_candidates" : [1],
+"actual_queries" : [[1.0464280853027077, 3.7563771114085744]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [113],
+"actual_queries" : [[-2.7126603916550724, -3.094432522448611]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [104],
+"actual_queries" : [[-2.9624476454306423, -1.8012348666606477]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [21],
+"actual_queries" : [[1.1675847280550955, 2.6797971544459265]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [87],
+"actual_queries" : [[1.2478526819669975, -2.401321575433885]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [103],
+"actual_queries" : [[-2.0858688828771803, -4.671532698982487]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [109],
+"actual_queries" : [[-1.9743312877933565, 0.18140789022329162]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [38],
+"actual_queries" : [[2.072857566941029, -0.9942100904278057]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [112],
+"actual_queries" : [[-0.44107596249400016, 1.3827389727293493]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [32],
+"actual_queries" : [[-0.046338329105780174, -2.493555219122624]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [43],
+"actual_queries" : [[1.5998486613338225, 0.7075547950614799]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [60],
+"actual_queries" : [[-0.6156950487431045, -2.364704859902173]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [10],
+"actual_queries" : [[-0.572899866842039, 3.737430451978082]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [48],
+"actual_queries" : [[1.456457486610121, 0.9949537071049701]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [66],
+"actual_queries" : [[0.775174277044266, 2.590791021064255]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [68],
+"actual_queries" : [[-1.1582822317032384, -2.7748421361106526]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [111],
+"actual_queries" : [[-0.03359826917112674, 0.633330406042719]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [20],
+"actual_queries" : [[1.4077594085936536, -0.6221718900651612]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [82],
+"actual_queries" : [[0.28453946989988577, 2.6835907660209815]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [106],
+"actual_queries" : [[-2.340922211632972, -3.5979178584366798]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [5],
+"actual_queries" : [[-0.1536697083420835, -1.833500734750137]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [30],
+"actual_queries" : [[1.412609868582548, -0.034544403012195524]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [47],
+"actual_queries" : [[-1.1109013599217734, 3.732710079145339]],
+"query_results" : [[1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [107],
+"actual_queries" : [[-2.9246404689423704, -0.20950957504227175]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+},
+{
+"query_candidates" : [101],
+"actual_queries" : [[-2.040670418002651, 1.1208823071467386]],
+"query_results" : [[-1]],
+"quality" : 1,
+"cost" : 1
+}],
+"surrogate_blackboard" : [],
+"evaluations" : {
+"RoundCounterEvaluator" : 25,
+"ModelEvaluator" : [],
+"ActiveLearningCurveEvaluator" : {
+"BasicActiveLearningCurveMetric" : [0.16666666666666666, 0.8333333333333334, 0.875, 0.3, 0.6833333333333333, 0.9, 0.9416666666666667, 0.9416666666666667, 0.925, 0.925, 0.975, 0.975, 0.975, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+"CertaintyReachedMetric" : [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+}
+
+}
+}
+}

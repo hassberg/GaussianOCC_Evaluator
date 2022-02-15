@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 class RampUpMeasure(LogfileEvaluationMetric):
     def __init__(self):
         self.title = "Ramp up"
-        self.k = 10
+        self.k = 5
 
     def apply(self, logs: [dict], pdf: PdfPages):
         all_data = []
@@ -25,6 +25,6 @@ class RampUpMeasure(LogfileEvaluationMetric):
             labels.append(log_name)
 
         fig1, ax = plt.subplots()
-        ax.set_title(self.title)
+        ax.set_title(self.title + ' - k=' + str(self.k))
         ax.boxplot(all_data, labels=labels)
         pdf.savefig(fig1)

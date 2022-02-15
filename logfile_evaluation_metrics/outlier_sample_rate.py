@@ -1,12 +1,14 @@
 from logfile_evaluation_metric import LogfileEvaluationMetric
 from matplotlib.backends.backend_pdf import PdfPages
 from nested_lookup import nested_lookup
+
 import matplotlib.pyplot as plt
+import numpy as np
 
 
-class QualityRangeMeasure(LogfileEvaluationMetric):
+class OutlierSamplingMeasure(LogfileEvaluationMetric):
     def __init__(self):
-        self.title = "Quality Range"
+        self.title = "Outlier Sampled"
 
     def apply(self, logs: [dict], pdf: PdfPages):
         all_data = []
@@ -15,10 +17,9 @@ class QualityRangeMeasure(LogfileEvaluationMetric):
             data = []
             for single_logging_result in log_result:
                 # TODO here apply metric..
-                found_statistics = nested_lookup("BasicActiveLearningCurveMetric", single_logging_result,
-                                                 with_keys=True)
-                for value in found_statistics.values():
-                    data.append(value[0][len(value[0]) - 1] - value[0][0])
+                sampled_scores = sum(
+                    [item for sublist in nested_lookup("query_results", single_logging_result) for item in sublist], [])
+                data.append(np.divide(sampled_scores.count(-1), len(sampled_scores)))
 
             all_data.append(data)
             labels.append(log_name)

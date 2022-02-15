@@ -4,9 +4,10 @@ from nested_lookup import nested_lookup
 import matplotlib.pyplot as plt
 
 
-class QualityRangeMeasure(LogfileEvaluationMetric):
+class CertaintyMeasure(LogfileEvaluationMetric):
     def __init__(self):
-        self.title = "Quality Range"
+        self.title = "Steps until certain about each point"
+        self.k = 5
 
     def apply(self, logs: [dict], pdf: PdfPages):
         all_data = []
@@ -15,10 +16,13 @@ class QualityRangeMeasure(LogfileEvaluationMetric):
             data = []
             for single_logging_result in log_result:
                 # TODO here apply metric..
-                found_statistics = nested_lookup("BasicActiveLearningCurveMetric", single_logging_result,
-                                                 with_keys=True)
+                found_statistics = nested_lookup("CertaintyReachedMetric", single_logging_result, with_keys=True)
                 for value in found_statistics.values():
-                    data.append(value[0][len(value[0]) - 1] - value[0][0])
+                    latest_uncertain = 0
+                    for i in range(len(value[0])):
+                        if value[0][i] is 0:
+                            latest_uncertain = i + 1
+                    data.append(latest_uncertain)
 
             all_data.append(data)
             labels.append(log_name)
