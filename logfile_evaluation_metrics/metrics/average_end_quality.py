@@ -1,4 +1,4 @@
-from logfile_evaluation_metric import LogfileEvaluationMetric
+from logfile_evaluation_metrics.logfile_evaluation_metric import LogfileEvaluationMetric
 from matplotlib.backends.backend_pdf import PdfPages
 from nested_lookup import nested_lookup
 import matplotlib.pyplot as plt

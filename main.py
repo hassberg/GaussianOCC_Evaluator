@@ -1,22 +1,42 @@
-from logfile_reader.logfile_reader import LogfileReader
-from logfile_evaluation_metrics.initial_correctness import InitialCorrectnessMeasure
-from logfile_evaluation_metrics.ramp_up import RampUpMeasure
-from logfile_evaluation_metrics.quality_range import QualityRangeMeasure
-from logfile_evaluation_metrics.average_end_quality import AverageEndQualityMeasure
-from logfile_evaluation_metrics.learning_stability import LearningStabilityMeasure
-from logfile_evaluation_metrics.certainty_reached import CertaintyMeasure
-from logfile_evaluation_metrics.outlier_sample_rate import OutlierSamplingMeasure
+import os
+import json
 
-from log_evaluator import LogEvaluator
+from log_evalmetric_extractor.eval_metric_extractor import EvalMetricExtractor
+from log_evalmetric_extractor.matthew_correlation_coefficient_extractor import MatthewCorrelationCoefficientExtractor
+from logfile_evaluation_metrics.logfile_evaluation_metrics_runner import LogfileEvaluationMetricsRunner
+from logfile_evaluation_metrics.metrics.all_learning_curves_plot import AllLearningCurvesPlot
+from logfile_evaluation_metrics.metrics.average_learning_curve_plot import AverageLearningCurvePlot
 
-file_name = ".\\logfiles\\data_log_mean_compare_tries_30"
 
-experiments_run = [("Constant, Uncertainty", ["ConstantPriorUncertaintyBasedBP"], [file_name]),
-                   ("Constant, Mean", ["ConstantPriorMeanBasedBP"], [file_name]),
-                   ("Custom, Uncertainty", ["CustomPriorUncertaintyBasedBP"], [file_name]),
-                   ("Custom, Mean", ["CustomPriorMeanBasedBP"], [file_name])]
-logfile_reader = LogfileReader(experiments_run)
-logs = logfile_reader.get_logs_by_experiments()
+def get_logged_metric(file_list, eval_metric_extractor: EvalMetricExtractor) -> dict:
+    log_metric_dictionary = {}
 
-evaluator = LogEvaluator([InitialCorrectnessMeasure(), QualityRangeMeasure(), RampUpMeasure(), AverageEndQualityMeasure(), LearningStabilityMeasure(), OutlierSamplingMeasure(), CertaintyMeasure()], logs)
-evaluator.evaluate("mean_compare_numTries_30")
+    for file in file_list:
+        path_array = file.split(os.sep)
+        key = path_array[1] + "_" + path_array[2]
+
+        file_content = open(file)
+        data_object = json.loads(file_content.read())
+        new_values = eval_metric_extractor.get_metrics_log(data_object)
+
+        if key in log_metric_dictionary:
+            log_metric_dictionary[key].extend(new_values)
+        else:
+            log_metric_dictionary[key] = new_values
+
+    return log_metric_dictionary
+
+
+metrics_extractors = [MatthewCorrelationCoefficientExtractor()]
+log_evaluation_metrics = [AllLearningCurvesPlot(), AverageLearningCurvePlot()]
+
+log_eval_runner = LogfileEvaluationMetricsRunner()
+
+root = "logfiles"
+files = [os.path.join(path, name) for path, subdirs, files in os.walk(root) for name in files]
+
+for metrics_extractor in metrics_extractors:
+    full_metrics_scoring = get_logged_metric(files, metrics_extractor)
+    log_eval_runner.evaluate(metrics_extractor.name, log_evaluation_metrics, full_metrics_scoring)
+
+log_eval_runner.end()
