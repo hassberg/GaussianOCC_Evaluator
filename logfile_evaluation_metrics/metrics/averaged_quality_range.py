@@ -36,6 +36,6 @@ class AverageQualityRange(LogfileEvaluationMetric):
 
                 plt.legend(fontsize=5)
 
-                plt.savefig("Average_quality_range_dropout-" + str(dropout) + "_range-"+ str(qr_length) +".svg")
+                plt.savefig("Average_quality_range_dropout-" + str(dropout) + "_range-" + str(qr_length) + ".svg")
                 pdf.savefig()
                 plt.close()

@@ -6,6 +6,7 @@ from log_evalmetric_extractor.matthew_correlation_coefficient_extractor import M
 from logfile_evaluation_metrics.logfile_evaluation_metrics_runner import LogfileEvaluationMetricsRunner
 from logfile_evaluation_metrics.metrics.all_learning_curves_plot import AllLearningCurvesPlot
 from logfile_evaluation_metrics.metrics.average_learning_curve_plot import AverageLearningCurvePlot
+from logfile_evaluation_metrics.metrics.averaged_quality_range import AverageQualityRange
 
 
 def get_logged_metric(file_list, eval_metric_extractor: EvalMetricExtractor) -> dict:
@@ -28,7 +29,7 @@ def get_logged_metric(file_list, eval_metric_extractor: EvalMetricExtractor) -> 
 
 
 metrics_extractors = [MatthewCorrelationCoefficientExtractor()]
-log_evaluation_metrics = [AllLearningCurvesPlot(), AverageLearningCurvePlot()]
+log_evaluation_metrics = [AllLearningCurvesPlot(), AverageLearningCurvePlot(), AverageQualityRange()]
 
 log_eval_runner = LogfileEvaluationMetricsRunner()
 
