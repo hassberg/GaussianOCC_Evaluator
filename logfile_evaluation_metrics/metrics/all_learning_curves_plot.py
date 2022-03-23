@@ -15,7 +15,7 @@ class AllLearningCurvesPlot(LogfileEvaluationMetric):
             title = str(key).split("_")[0] + '\n' + str(key).split("_")[1]
             plt.title(title)
 
-            for single_run_scoring in values:
+            for single_run_scoring in [i for subelems in values.items() for i in subelems[1]]:
                 plt.plot(range(len(single_run_scoring)), single_run_scoring)
 
             pdf.savefig()

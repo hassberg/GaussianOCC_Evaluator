@@ -17,15 +17,17 @@ class AverageQualityRange(LogfileEvaluationMetric):
                 title = "Average Quality Range with initial scoring >= " + str(dropout) + " and Range = " + str(qr_length)
                 plt.title(title)
                 plt.axhline(0, color='gray')
+                plt.gca().set_ylim([-0.5,0.5])
 
                 for key, values in logs.items():
-                    filtered_values = list(filter(lambda x: x[0] >= dropout, values))
+                    value_list = [i for subelems in values.items() for i in subelems[1]]
+                    filtered_values = list(filter(lambda x: x[0] >= dropout, value_list))
                     if len(filtered_values) >= 1:
                         average_scoring = np.mean(filtered_values, axis=0)
                         label = "**" + str(len(filtered_values)) + "**" + str(key).split("_")[0] + '\n' + \
                                 str(key).split("_")[1]
                     else:
-                        average_scoring = np.mean(values, axis=0)
+                        average_scoring = np.mean(value_list, axis=0)
                         label = "**ALL**" + str(key).split("_")[0] + '\n' + str(key).split("_")[1]
 
                     quality_range = []
@@ -36,6 +38,6 @@ class AverageQualityRange(LogfileEvaluationMetric):
 
                 plt.legend(fontsize=5)
 
-                plt.savefig("Average_quality_range_dropout-" + str(dropout) + "_range-" + str(qr_length) + ".svg")
+                # plt.savefig("Average_quality_range_dropout-" + str(dropout) + "_range-" + str(qr_length) + ".svg")
                 pdf.savefig()
                 plt.close()

@@ -11,4 +11,4 @@ class MatthewCorrelationCoefficientExtractor(EvalMetricExtractor):
         self.name = "Matthew Correlation Coefficient"
 
     def get_metrics_log(self, dictonary: dict) -> List[List]:
-        return nested_lookup("MatthewCorrelationCoefficient", dictonary)
+        return nested_lookup("MccEval", dictonary)
