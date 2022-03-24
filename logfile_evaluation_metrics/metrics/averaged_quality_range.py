@@ -6,6 +6,7 @@ import numpy as np
 
 class AverageQualityRange(LogfileEvaluationMetric):
     def __init__(self, ):
+        self.name = "average_quality_range"
         self.dropout_boundaries = [-1.0, 0.1, 0.2, 0.3, 0.4]
         self.range_lengths = [3, 5, 10]
 

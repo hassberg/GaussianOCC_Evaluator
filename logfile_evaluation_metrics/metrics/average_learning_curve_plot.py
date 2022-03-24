@@ -6,6 +6,7 @@ import numpy as np
 
 class AverageLearningCurvePlot(LogfileEvaluationMetric):
     def __init__(self, ):
+        self.name = "average_learning_curve"
         self.dropout_boundaries = [-1.0, 0.1, 0.2, 0.3, 0.4]
 
     def apply_metric(self, metrics_name: str, logs: dict, pdf: PdfPages):

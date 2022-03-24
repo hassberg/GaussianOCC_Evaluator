@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 class AllLearningCurvesPlot(LogfileEvaluationMetric):
     def __init__(self):
-        pass
+        self.name = "all_learning_curves"
 
     def apply_metric(self,metrics_name,  logs: dict, pdf: PdfPages):
         for key, values in logs.items():

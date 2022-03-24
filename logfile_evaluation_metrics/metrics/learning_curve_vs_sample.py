@@ -7,19 +7,17 @@ import numpy as np
 class LearningCurveVsSample(LogfileEvaluationMetric):
     def __init__(self, ):
         self.dropout_boundaries = [-1.0, 0.1, 0.2, 0.3, 0.4]
+        self.name = "learning_curve_vs_sampled"
 
     def apply_metric(self, metrics_name: str, logs: dict, pdf: PdfPages):
-        plt.xlabel("Iterations")
-        plt.ylabel(metrics_name)
-        title = "Average Learning Curve vs samples"
-        plt.title(title)
         for key, values in logs.items():
-            for rd in [i for subelems in values.items() for i in subelems[1]]:
-                plt.plot(range(len(rd[0])), rd[0])
-                plt.plot([i+1 for i in range(len(rd[1]))], rd[1])
+            scorings = [i[0] for subelems in values.items() for i in subelems[1]]
+            samples = [i[1] for subelems in values.items() for i in subelems[1]]
 
-                # plt.legend(fontsize=5)
+            fig1, ax = plt.subplots()
+            ax.plot(range(len(scorings[0])), np.average(scorings, axis=0))
+            ax.plot([i + 1 for i in range(len(samples[0]))], np.average(samples, axis=0))
 
-                # plt.savefig("Average_lerning_curve_dropout-" + str(dropout) + ".svg")
-                pdf.savefig()
-                plt.close()
+            ax.set_title(key.split("_")[0] + "\n" + key.split("_")[1])
+            pdf.savefig(fig1)
+            plt.close(fig1)

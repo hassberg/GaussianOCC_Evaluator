@@ -5,6 +5,10 @@ import numpy as np
 
 
 class AverageBestLearningCurvePlot(LogfileEvaluationMetric):
+    def __init__(self):
+        self.name = "average_of_best_learning_curves"
+
+
     def apply_metric(self, metrics_name: str, logs: dict, pdf: PdfPages):
         plt.xlabel("Iterations")
         plt.ylabel(metrics_name)
@@ -27,7 +31,7 @@ class AverageBestLearningCurvePlot(LogfileEvaluationMetric):
             label = str(key).split("_")[0] + '\n' + str(key).split("_")[1]
             plt.plot(range(len(average_scoring)), average_scoring, label=label)
 
-        plt.legend(fontsize=5)
+        plt.legend(fontsize=4)
 
         # plt.savefig("Average_lerning_curve_dropout-" + str(dropout) + ".svg")
         pdf.savefig()
