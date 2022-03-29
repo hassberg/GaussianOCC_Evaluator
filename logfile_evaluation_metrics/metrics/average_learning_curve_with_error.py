@@ -17,7 +17,7 @@ class AverageLearningCurveWithErrorBar(LogfileEvaluationMetric):
                 plt.ylabel(metrics_name)
                 title = "Average Learning Curve with initial scoring > " + str(dropout)
                 plt.title(title)
-                plt.gca().set_ylim([0, 1])
+                plt.gca().set_ylim([-1, 1])
                 value_list = [i for subelems in values.items() for i in subelems[1]]
                 filtered_values = list(filter(lambda x: x[0] >= dropout, value_list))
                 if len(filtered_values) >= 1:
@@ -33,7 +33,7 @@ class AverageLearningCurveWithErrorBar(LogfileEvaluationMetric):
                 if average_scoring[len(average_scoring) -1] - average_scoring[0] > 0.01:
                     plt.errorbar(x=range(len(average_scoring)), y=average_scoring, yerr=average_error, label=label)
 
-                    plt.legend(fontsize=5)
+                    plt.legend(fontsize=4)
 
                     # plt.savefig("Average_lerning_curve_dropout-" + str(dropout) + ".svg")
                     pdf.savefig()
