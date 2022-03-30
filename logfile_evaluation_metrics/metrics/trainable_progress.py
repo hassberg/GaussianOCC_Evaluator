@@ -37,6 +37,6 @@ class TrainableProgress(LogfileEvaluationMetric):
 
                 plt.legend(fontsize=4)
 
-                # plt.savefig("Average_lerning_curve_dropout-" + str(dropout) + ".svg")
+                # plt.savefig("Self_Training_parameter-dropout-" + str(dropout) + ".svg")
                 pdf.savefig()
                 plt.close()

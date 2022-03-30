@@ -43,6 +43,6 @@ class VanishingProgress(LogfileEvaluationMetric):
 
                 plt.legend(fontsize=4)
 
-                # plt.savefig("Average_lerning_curve_dropout-" + str(dropout) + ".svg")
+                # plt.savefig("Vanishing_parameter-dropout-" + str(dropout) + ".svg")
                 pdf.savefig()
                 plt.close()

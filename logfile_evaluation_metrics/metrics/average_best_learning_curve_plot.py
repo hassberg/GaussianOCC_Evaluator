@@ -33,6 +33,6 @@ class AverageBestLearningCurvePlot(LogfileEvaluationMetric):
 
         plt.legend(fontsize=4)
 
-        # plt.savefig("Average_lerning_curve_dropout-" + str(dropout) + ".svg")
+        # plt.savefig("Average_best_learning_curve.svg")
         pdf.savefig()
         plt.close()

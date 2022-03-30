@@ -26,6 +26,6 @@ class CustomParameter(LogfileEvaluationMetric):
                 ax.set_title(key + "\n dropout:" + str(dropout) + " samples:" + str(len(filtered_values)))
                 ax.boxplot(all_data, labels=parameter)
                 pdf.savefig(fig1)
-                # plt.savefig("Average_lerning_curve_dropout-" + str(dropout) + ".svg")
-                pdf.savefig()
+
+                # plt.savefig("Custom_parameter-dropout-" + str(dropout) + ".svg")
                 plt.close()
