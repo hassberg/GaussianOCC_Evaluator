@@ -27,5 +27,5 @@ class CustomParameter(LogfileEvaluationMetric):
                 ax.boxplot(all_data, labels=parameter)
                 pdf.savefig(fig1)
 
-                # plt.savefig("Custom_parameter-dropout-" + str(dropout) + ".svg")
+                # plt.savefig("Custom_parameter-"+key+"-dropout-" + str(dropout) + ".svg")
                 plt.close()

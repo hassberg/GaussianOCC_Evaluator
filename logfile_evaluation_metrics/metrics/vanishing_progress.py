@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from nested_lookup import nested_lookup
 
+
 class VanishingProgress(LogfileEvaluationMetric):
     def __init__(self, ):
         self.name = "vanishing_progress_curves"
@@ -12,8 +13,7 @@ class VanishingProgress(LogfileEvaluationMetric):
     def apply_metric(self, metrics_name: str, logs: dict, pdf: PdfPages):
         for dropout in self.dropout_boundaries:
             for key, values in logs.items():
-
-                filtered_values = list( filter(lambda x: x["MccEval"][0] >= dropout, [i for i in nested_lookup("evaluations", values)]))
+                filtered_values = list(filter(lambda x: x["MccEval"][0] >= dropout, [i for i in nested_lookup("evaluations", values)]))
 
                 plt.xlabel("Iterations")
                 title = key + "\ndropout:" + str(dropout) + " samples:" + str(len(filtered_values))
@@ -40,9 +40,7 @@ class VanishingProgress(LogfileEvaluationMetric):
                 label = "Logged Noise"
                 plt.plot(range(len(average_scoring)), average_scoring, label=label)
 
-
                 plt.legend(fontsize=4)
-
-                # plt.savefig("Vanishing_parameter-dropout-" + str(dropout) + ".svg")
+                # plt.savefig("Vanishing_parameter-"+key+"-dropout-" + str(dropout) + ".svg")
                 pdf.savefig()
                 plt.close()

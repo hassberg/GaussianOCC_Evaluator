@@ -6,7 +6,6 @@ import numpy as np
 
 class LearningCurveVsSample(LogfileEvaluationMetric):
     def __init__(self, ):
-        self.dropout_boundaries = [-1.0, 0.1, 0.2, 0.3, 0.4]
         self.name = "learning_curve_vs_sampled"
 
     def apply_metric(self, metrics_name: str, logs: dict, pdf: PdfPages):

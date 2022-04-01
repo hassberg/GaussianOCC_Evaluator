@@ -11,7 +11,10 @@ from logfile_evaluation_metrics.metrics.average_learning_curve_plot import Avera
 from logfile_evaluation_metrics.metrics.average_learning_curve_with_error import AverageLearningCurveWithErrorBar
 from logfile_evaluation_metrics.metrics.averaged_quality_range import AverageQualityRange
 from logfile_evaluation_metrics.metrics.custom_parameter import CustomParameter
+from logfile_evaluation_metrics.metrics.improvement_vs_outlier import ImprovementVsOutlier
+from logfile_evaluation_metrics.metrics.learning_curve_outlier_sampled_dropout import LearningCurveOutlierSampled
 from logfile_evaluation_metrics.metrics.learning_curve_vs_sample import LearningCurveVsSample
+from logfile_evaluation_metrics.metrics.outlier_sampling import OutlierSampling
 from logfile_evaluation_metrics.metrics.trainable_progress import TrainableProgress
 from logfile_evaluation_metrics.metrics.vanishing_progress import VanishingProgress
 
@@ -47,8 +50,7 @@ def get_log_for_model(file_list, model_name) -> dict:
         model = path_array[1]
         selection_criteria = path_array[2]
 
-
-        if model_name in model:
+        if model_name == model:
 
             file_content = open(file)
             data_object = json.loads(file_content.read())
@@ -67,13 +69,14 @@ log_eval_runner = LogfileEvaluationMetricsRunner()
 root = "logfiles"
 files = [os.path.join(path, name) for path, subdirs, files in os.walk(root) for name in files]
 
-mcc_log_evaluation_metrics = [AllLearningCurvesPlot(), AverageLearningCurvePlot(), AverageQualityRange(), AverageLearningCurveWithErrorBar(),AverageBestLearningCurvePlot()]
-mcc_extractor = MatthewCorrelationCoefficientExtractor()
-full_metrics_scoring = get_logged_metric(files, mcc_extractor)
-log_eval_runner.evaluate(mcc_extractor.name, mcc_log_evaluation_metrics, full_metrics_scoring)
+# mcc_log_evaluation_metrics = [AllLearningCurvesPlot(), AverageLearningCurvePlot(), AverageQualityRange(), AverageBestLearningCurvePlot()]
+# mcc_extractor = MatthewCorrelationCoefficientExtractor()
+# full_metrics_scoring = get_logged_metric(files, mcc_extractor)
+# log_eval_runner.evaluate(mcc_extractor.name, mcc_log_evaluation_metrics, full_metrics_scoring)
 
-# log_eval_runner.evaluate("mcc and sample", [LearningCurveVsSample()], get_logged_metric(files, MccSampleExtractor()))
+log_eval_runner.evaluate("Outlier Sampled", [LearningCurveOutlierSampled()], get_logged_metric(files, MccSampleExtractor()))
+# log_eval_runner.evaluate("Outlier Sampled", [OutlierSampling(),ImprovementVsOutlier()], get_logged_metric(files, MccSampleExtractor()))
 
-log_eval_runner.evaluate("Vanishable Prior", [VanishingProgress()], get_log_for_model(files, "Vanishing"))
-log_eval_runner.evaluate("Trainable Lengthscale", [TrainableProgress()], get_log_for_model(files, "SelfTraining"))
-log_eval_runner.evaluate("Custom and Fix", [CustomParameter()], get_log_for_model(files, "Custom"))
+# log_eval_runner.evaluate("Vanishable Prior", [VanishingProgress()], get_log_for_model(files, "VanishingSelfTrainingCustomModelBasedPriorMeanSurrogateModel"))
+# log_eval_runner.evaluate("Trainable Lengthscale", [TrainableProgress()], get_log_for_model(files, "SelfTrainingCustomModelBasedPriorMeanSurrogateModel"))
+# log_eval_runner.evaluate("Custom and Fix", [CustomParameter()], get_log_for_model(files, "CustomModelBasedPriorMeanSurrogateModel"))

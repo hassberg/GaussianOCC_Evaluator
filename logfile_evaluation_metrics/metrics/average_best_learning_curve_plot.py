@@ -36,3 +36,31 @@ class AverageBestLearningCurvePlot(LogfileEvaluationMetric):
         # plt.savefig("Average_best_learning_curve.svg")
         pdf.savefig()
         plt.close()
+
+        #std
+        plt.xlabel("Iterations")
+        plt.ylabel(metrics_name)
+        title = "Standard deviation of average Best Learning Curve  per Datasample "
+        plt.title(title)
+
+        for key, values in logs.items():
+            best_values = []
+            best = []
+            best_scoring = -2
+            for sample_name, sample_scoring in values.items():
+                for iter_scoring in sample_scoring:
+                    if iter_scoring[len(iter_scoring) - 1] - iter_scoring[0] > best_scoring:
+                        best_scoring = iter_scoring[len(iter_scoring) - 1] - iter_scoring[0]
+                        best = iter_scoring
+                best_values.append(best)
+                best_scoring = -2
+
+            average_scoring = np.std(best_values, axis=0)
+            label = str(key).split("_")[0] + '\n' + str(key).split("_")[1]
+            plt.plot(range(len(average_scoring)), average_scoring, label=label)
+
+        plt.legend(fontsize=4)
+
+        # plt.savefig("std_best_learning_curve.svg")
+        pdf.savefig()
+        plt.close()
