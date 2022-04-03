@@ -9,7 +9,7 @@ import numpy as np
 class MccSampleExtractor(EvalMetricExtractor):
 
     def __init__(self):
-        self.name = "Matthew Correlation Coefficient"
+        self.name = "Mcc vs Sample"
 
     def get_metrics_log(self, dictionary: dict) -> []:
         log = []
@@ -19,3 +19,4 @@ class MccSampleExtractor(EvalMetricExtractor):
             log.append((mcc[0], sampled))
 
         return log
+
