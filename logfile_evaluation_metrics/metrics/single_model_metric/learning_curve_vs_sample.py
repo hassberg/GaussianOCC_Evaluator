@@ -10,7 +10,7 @@ import numpy as np
 class LearningCurveVsSample(LogfileEvaluationMetric):
     def __init__(self, ):
         self.name = "learning_curve_vs_sampled"
-        self.metric_of_interest = "Mcc vs Sample"
+        self.moi = "Mcc vs Sample"
 
     def apply_metric(self, save_path: str, logs: dict, pdf: PdfPages, save_fig: bool = False):
         fig1, ax = plt.subplots()
@@ -22,7 +22,7 @@ class LearningCurveVsSample(LogfileEvaluationMetric):
         ax2.set_ylabel("Avg Outlier Sampled")
         ax.set_title(title)
 
-        value_list = [k for i in nested_lookup(self.metric_of_interest, logs) for subelem in i for k in subelem]
+        value_list = [k for i in nested_lookup(self.moi, logs) for subelem in i for k in subelem]
 
         avg_mcc = np.average([i[0] for i in value_list], axis=0)
         ax.plot(range(len(avg_mcc)), avg_mcc, label="mcc")

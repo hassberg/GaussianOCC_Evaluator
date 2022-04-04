@@ -13,14 +13,14 @@ class AverageLearningCurveDropoutOutlierSampled(LogfileEvaluationMetric):
     def __init__(self, ):
         self.name = "average_learning_curve_dropout_by_outlier"
         self.outlier_sampled = [0, 1, 5, 10]
-        self.metric_of_interest = "Mcc vs Sample"
+        self.moi = "Mcc vs Sample"
 
     def apply_metric(self, save_path: str, logs: dict, pdf: PdfPages, save_fig: bool = False):
         logs_with_outlier_sampled = []
         all_lines = [(model + "_" + qs, logs[model][qs]) for model in logs.keys() for qs in logs[model]]
         for model_qs, curr_log in all_lines:
             # list contains best k runs:
-            value_list = [k for i in nested_lookup(self.metric_of_interest, curr_log) for subelem in i for k in subelem]
+            value_list = [k for i in nested_lookup(self.moi, curr_log) for subelem in i for k in subelem]
             outlier_sampled_w_mcc = list(map(lambda x: (sum(x[0]), x[1]), list(map(lambda x: (list(map(lambda y: float(y) * -0.5 + 0.5, x[1])), x[0]), value_list))))
             logs_with_outlier_sampled.append((model_qs, outlier_sampled_w_mcc))
 

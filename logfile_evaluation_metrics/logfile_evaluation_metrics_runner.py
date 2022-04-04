@@ -1,6 +1,7 @@
 import os
 from typing import List
 
+from nested_lookup import get_all_keys
 from matplotlib.backends.backend_pdf import PdfPages
 from logfile_evaluation_metrics.logfile_evaluation_metric import LogfileEvaluationMetric
 
@@ -8,8 +9,9 @@ from logfile_evaluation_metrics.logfile_evaluation_metric import LogfileEvaluati
 def apply_evaluation_metric(metrics, out_path, log):
     os.makedirs(out_path, exist_ok=True)
     for metric in metrics:
-        with PdfPages(os.path.join(out_path, '_eval-' + metric.name + '.pdf')) as pdf:
-            metric.apply_metric(save_path=out_path, logs=log, pdf=pdf, save_fig=True) #TODO here can figs be saved..
+        if metric.moi in get_all_keys(log):
+            with PdfPages(os.path.join(out_path, '_eval-' + metric.name + '.pdf')) as pdf:
+                metric.apply_metric(save_path=out_path, logs=log, pdf=pdf, save_fig=False) #TODO here can figs be saved..
 
 
 class LogfileEvaluationMetricsRunner():

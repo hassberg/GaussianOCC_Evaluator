@@ -10,7 +10,7 @@ import numpy as np
 class AverageQualityRange(LogfileEvaluationMetric):
     def __init__(self, ):
         self.name = "average_quality_range"
-        self.metric_of_interest = "Matthew Correlation Coefficient"
+        self.moi = "Matthew Correlation Coefficient"
         self.dropout_boundaries = [-1.0, 0.1, 0.2, 0.3, 0.4]
         self.range_lengths = [3, 5, 10]
 
@@ -18,7 +18,7 @@ class AverageQualityRange(LogfileEvaluationMetric):
         for dropout in self.dropout_boundaries:
             for qr_length in self.range_lengths:
                 plt.xlabel("Iterations")
-                plt.ylabel(self.metric_of_interest + " improvement")
+                plt.ylabel(self.moi + " improvement")
                 title = "Average Quality Range with initial scoring geq " + str(dropout) + " and Range = " + str(qr_length)
                 plt.title(title.replace("geq", ">="))
                 plt.axhline(0, color='gray')
@@ -27,7 +27,7 @@ class AverageQualityRange(LogfileEvaluationMetric):
                 all_lines = [(model + "_" + qs, logs[model][qs]) for model in logs.keys() for qs in logs[model]]
                 for model_qs, curr_log in all_lines:
                     # list contains best k runs:
-                    value_list = [k for i in nested_lookup(self.metric_of_interest, curr_log) for subelem in i for k in subelem]
+                    value_list = [k for i in nested_lookup(self.moi, curr_log) for subelem in i for k in subelem]
                     filtered_values = list(filter(lambda x: x[0] >= dropout, value_list))
 
                     if len(filtered_values) >= 1:

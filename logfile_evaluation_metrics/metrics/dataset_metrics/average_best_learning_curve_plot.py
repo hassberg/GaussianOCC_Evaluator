@@ -10,11 +10,11 @@ import numpy as np
 class AverageBestLearningCurvePlot(LogfileEvaluationMetric):
     def __init__(self):
         self.name = "average_of_best_learning_curves"
-        self.metric_of_interest = "Matthew Correlation Coefficient"
+        self.moi = "Matthew Correlation Coefficient"
 
     def apply_metric(self, save_path: str, logs: dict, pdf: PdfPages, save_fig: bool = False):
         plt.xlabel("Iterations")
-        plt.ylabel(self.metric_of_interest)
+        plt.ylabel(self.moi)
         title = "Average Best Learning Curve per Datasample"
         plt.title(title)
 
@@ -24,7 +24,7 @@ class AverageBestLearningCurvePlot(LogfileEvaluationMetric):
         for model_qs, curr_log in all_lines:
             best_values = []
             dict_log = {}
-            for sample, log in [(i, param_run[i]) for param_run in nested_lookup(self.metric_of_interest, curr_log) for i in range(len(param_run))]:
+            for sample, log in [(i, param_run[i]) for param_run in nested_lookup(self.moi, curr_log) for i in range(len(param_run))]:
                 if sample in dict_log.keys():
                     dict_log[sample].extend(log)
                 else:
@@ -51,7 +51,7 @@ class AverageBestLearningCurvePlot(LogfileEvaluationMetric):
 
         #std
         plt.xlabel("Iterations")
-        plt.ylabel(self.metric_of_interest)
+        plt.ylabel(self.moi)
         title = "Standard deviation of average best learning curve per datasample"
         plt.title(title)
 
