@@ -5,6 +5,7 @@ from json import JSONDecodeError
 from nested_lookup import nested_lookup
 from log_evalmetric_extractor.eval_metric_extractor import EvalMetricExtractor
 from log_evalmetric_extractor.logfile_reader import read_log
+from log_evalmetric_extractor.metric_extractors.hyperparameter_extactor import HyperparameterSelected
 from log_evalmetric_extractor.metric_extractors.matthew_correlation_coefficient_extractor import MatthewCorrelationCoefficientExtractor
 from log_evalmetric_extractor.metric_extractors.mcc_sample_extractor import MccSampleExtractor
 from log_evalmetric_extractor.metric_extractors.sampled_point import SampledPoints
@@ -18,6 +19,7 @@ from logfile_evaluation_metrics.metrics.dataset_metrics.averaged_quality_range i
 from logfile_evaluation_metrics.metrics.custom_parameter import CustomParameter
 from logfile_evaluation_metrics.metrics.improvement_vs_outlier import ImprovementVsOutlier
 from logfile_evaluation_metrics.metrics.dataset_metrics.learning_curve_outlier_sampled_dropout import AverageLearningCurveDropoutOutlierSampled
+from logfile_evaluation_metrics.metrics.single_model_metric.hyperparameter_eval_metric import HyperparameterEvalMetric
 from logfile_evaluation_metrics.metrics.single_model_metric.learning_curve_vs_sample import LearningCurveVsSample
 from logfile_evaluation_metrics.metrics.outlier_sampling import OutlierSampling
 from logfile_evaluation_metrics.metrics.single_model_metric.sample_point_distance_by_hyperparameter_selection import SamplePointDistancesByHyperparameterSelection
@@ -25,10 +27,10 @@ from logfile_evaluation_metrics.metrics.trainable_progress import TrainableProgr
 from logfile_evaluation_metrics.metrics.vanishing_progress import VanishingProgress
 
 root = "logfiles"
-extractors = [SampledPoints()]#, MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
+extractors = [HyperparameterSelected()]#,SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
 logged_dict = read_log(root, extractors)
 
-single_model_metric = [LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection()]
+single_model_metric = [LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
 dataset_metric = [AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), AverageQualityRange(), AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance()]
 
 log_eval_runner = LogfileEvaluationMetricsRunner(single_model_metrics=single_model_metric, dataset_metric=dataset_metric)
