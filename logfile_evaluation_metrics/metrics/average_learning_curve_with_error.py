@@ -9,6 +9,7 @@ class AverageLearningCurveWithErrorBar(LogfileEvaluationMetric):
         self.name = "average_learning_curve_with_error_bar"
         self.dropout_boundaries = [-1.0, 0.1, 0.2, 0.3, 0.4]
 
+    # TODO impl this with a shaded variance..
     def apply_metric(self, metrics_name: str, logs: dict, pdf: PdfPages):
         for dropout in self.dropout_boundaries:
 
