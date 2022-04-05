@@ -16,18 +16,15 @@ from logfile_evaluation_metrics.metrics.dataset_metrics.average_best_learning_cu
 from logfile_evaluation_metrics.metrics.dataset_metrics.average_learning_curve_plot import AverageLearningCurvePlot
 from logfile_evaluation_metrics.metrics.average_learning_curve_with_error import AverageLearningCurveWithErrorBar
 from logfile_evaluation_metrics.metrics.dataset_metrics.averaged_quality_range import AverageQualityRange
-from logfile_evaluation_metrics.metrics.custom_parameter import CustomParameter
 from logfile_evaluation_metrics.metrics.improvement_vs_outlier import ImprovementVsOutlier
 from logfile_evaluation_metrics.metrics.dataset_metrics.learning_curve_outlier_sampled_dropout import AverageLearningCurveDropoutOutlierSampled
 from logfile_evaluation_metrics.metrics.single_model_metric.hyperparameter_eval_metric import HyperparameterEvalMetric
 from logfile_evaluation_metrics.metrics.single_model_metric.learning_curve_vs_sample import LearningCurveVsSample
 from logfile_evaluation_metrics.metrics.outlier_sampling import OutlierSampling
 from logfile_evaluation_metrics.metrics.single_model_metric.sample_point_distance_by_hyperparameter_selection import SamplePointDistancesByHyperparameterSelection
-from logfile_evaluation_metrics.metrics.trainable_progress import TrainableProgress
-from logfile_evaluation_metrics.metrics.vanishing_progress import VanishingProgress
 
 root = "logfiles"
-extractors = [HyperparameterSelected()]#,SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
+extractors = [HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
 logged_dict = read_log(root, extractors)
 
 single_model_metric = [LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
@@ -35,8 +32,3 @@ dataset_metric = [AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), Av
 
 log_eval_runner = LogfileEvaluationMetricsRunner(single_model_metrics=single_model_metric, dataset_metric=dataset_metric)
 log_eval_runner.evaluate(logged_dict)
-
-# Parameter -> extractor first needed...
-# log_eval_runner.evaluate("Vanishable Prior", [VanishingProgress()], get_log_for_model(files, "VanishingSelfTrainingCustomModelBasedPriorMeanSurrogateModel"))
-# log_eval_runner.evaluate("Trainable Lengthscale", [TrainableProgress()], get_log_for_model(files, "SelfTrainingCustomModelBasedPriorMeanSurrogateModel"))
-# log_eval_runner.evaluate("Custom and Fix", [CustomParameter()], get_log_for_model(files, "CustomModelBasedPriorMeanSurrogateModel"))

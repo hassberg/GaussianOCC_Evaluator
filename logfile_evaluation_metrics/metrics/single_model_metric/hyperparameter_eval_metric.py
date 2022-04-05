@@ -22,41 +22,39 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
             value_params.append([x[1] for x in lst])
 
         ## plot learning..
-        plt.xlabel("Iterations")
-        plt.ylabel(self.moi)
-        title = "Learning curve of Parameters.."
-        plt.title(title)
-        for i in range(len(list_params)):
-            ith = list_params[i]
-            for key in get_all_keys(ith[0]):
-                mean = np.mean([m for x in ith for l in nested_lookup(key, x) for m in l], axis=0)
-                plt.plot(range(len(mean)), mean, label=str(i + 1) + "-" + key)
+        if len(get_all_keys(list_params)) > 0:
+            plt.xlabel("Iterations")
+            plt.ylabel(self.moi)
+            title = "Learning curve of Parameters.."
+            plt.title(title)
+            for i in range(len(list_params)):
+                ith = list_params[i]
+                for key in get_all_keys(ith[0]):
+                    mean = np.mean([m for x in ith for l in nested_lookup(key, x) for m in l], axis=0)
+                    plt.plot(range(len(mean)), mean, label=str(i + 1) + "-" + key)
 
-        plt.legend(fontsize=5)
-        pdf.savefig()
-        if save_fig:
-            plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
-        plt.close()
+            plt.legend(fontsize=5)
+            pdf.savefig()
+            if save_fig:
+                plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
+            plt.close()
 
         # grafik k best abs.
         params = []
         for key in get_all_keys(value_params[0][0]):
             params.append((key, [x[0] for i in range(len(value_params)) for x in nested_lookup(key, value_params[i][0])]))
         if len(params) > 0:
-            plt.xlabel("Iterations")
-            plt.ylabel(self.moi)
+            fig1, ax = plt.subplots(1, len(params))
             title = "Grid searched best Parameters.."
-            plt.title(title)
+            fig1.suptitle(title)
+            if not isinstance(ax, np.ndarray):
+                ax = [ax]
 
-            labels = []
-            values = []
             for i in range(len(params)):
-                labels.append(params[i][0])
-                values.append([i[0] for i in params[i][1]])
+                ax[i].set_ylabel(params[i][0])
+                ax[i].boxplot([[i[0] for i in params[i][1]]], labels=[params[i][0]])
 
-            plt.boxplot(values, labels=labels)
-
-            pdf.savefig()
+            pdf.savefig(fig1)
             if save_fig:
                 plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
-            plt.close()
+            plt.close(fig1)
