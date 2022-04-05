@@ -14,7 +14,7 @@ from logfile_evaluation_metrics.metrics.dataset_metrics.average_sample_point_dis
 from logfile_evaluation_metrics.metrics.single_model_metric.all_learning_curves_plot import AllLearningCurvesPlot
 from logfile_evaluation_metrics.metrics.dataset_metrics.average_best_learning_curve_plot import AverageBestLearningCurvePlot
 from logfile_evaluation_metrics.metrics.dataset_metrics.average_learning_curve_plot import AverageLearningCurvePlot
-from logfile_evaluation_metrics.metrics.average_learning_curve_with_error import AverageLearningCurveWithErrorBar
+from logfile_evaluation_metrics.metrics.dataset_metrics.average_learning_curve_with_std import AverageLearningCurveWithStd
 from logfile_evaluation_metrics.metrics.dataset_metrics.averaged_quality_range import AverageQualityRange
 from logfile_evaluation_metrics.metrics.improvement_vs_outlier import ImprovementVsOutlier
 from logfile_evaluation_metrics.metrics.dataset_metrics.learning_curve_outlier_sampled_dropout import AverageLearningCurveDropoutOutlierSampled
@@ -28,7 +28,7 @@ extractors = [HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoeff
 logged_dict = read_log(root, extractors)
 
 single_model_metric = [LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
-dataset_metric = [AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), AverageQualityRange(), AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance()]
+dataset_metric = [AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), AverageQualityRange(), AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance(), AverageLearningCurveWithStd()]
 
 log_eval_runner = LogfileEvaluationMetricsRunner(single_model_metrics=single_model_metric, dataset_metric=dataset_metric)
 log_eval_runner.evaluate(logged_dict)
