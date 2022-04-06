@@ -28,7 +28,6 @@ class SamplePointDistancesByHyperparameterSelection(LogfileEvaluationMetric):
         plt.boxplot([i[1] for i in average_distances], labels=[str(i[0] + 1) for i in average_distances])
         plt.xticks(fontsize=6, rotation=10)
 
-        plt.legend(fontsize=4)
         if save_fig:
             plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
         pdf.savefig()

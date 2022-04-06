@@ -10,6 +10,7 @@ from log_evalmetric_extractor.metric_extractors.matthew_correlation_coefficient_
 from log_evalmetric_extractor.metric_extractors.mcc_sample_extractor import MccSampleExtractor
 from log_evalmetric_extractor.metric_extractors.sampled_point import SampledPoints
 from logfile_evaluation_metrics.logfile_evaluation_metrics_runner import LogfileEvaluationMetricsRunner
+from logfile_evaluation_metrics.metrics.dataset_metrics.average_best_learning_curve_plot_with_error_bar import AverageBestLearningCurvePlotWithStd
 from logfile_evaluation_metrics.metrics.dataset_metrics.average_sample_point_distance import AverageSamplePointDistance
 from logfile_evaluation_metrics.metrics.single_model_metric.all_learning_curves_plot import AllLearningCurvesPlot
 from logfile_evaluation_metrics.metrics.dataset_metrics.average_best_learning_curve_plot import AverageBestLearningCurvePlot
@@ -28,7 +29,19 @@ extractors = [HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoeff
 logged_dict = read_log(root, extractors)
 
 single_model_metric = [LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
-dataset_metric = [AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), AverageQualityRange(), AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance(), AverageLearningCurveWithStd()]
+dataset_metric = [AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), AverageBestLearningCurvePlotWithStd(),AverageQualityRange(), AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance(), AverageLearningCurveWithStd()]
 
-log_eval_runner = LogfileEvaluationMetricsRunner(single_model_metrics=single_model_metric, dataset_metric=dataset_metric)
-log_eval_runner.evaluate(logged_dict)
+
+# print("on Dataset-Metrics")
+# for metric in dataset_metric:
+#     print("started: " + metric.name)
+#     log_eval_runner = LogfileEvaluationMetricsRunner(single_model_metrics=[], dataset_metric=[metric])
+#     log_eval_runner.evaluate(logged_dict)
+#     print("finished: " + metric.name)
+#
+print("on SingleModel-Metrics")
+for metric in single_model_metric:
+    print("started: " + metric.name)
+    log_eval_runner = LogfileEvaluationMetricsRunner(single_model_metrics=[metric], dataset_metric=[])
+    log_eval_runner.evaluate(logged_dict)
+    print("finished: " + metric.name)
