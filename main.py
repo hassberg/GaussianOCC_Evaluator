@@ -1,7 +1,3 @@
-import os
-import json
-from json import JSONDecodeError
-
 from nested_lookup import nested_lookup
 from log_evalmetric_extractor.eval_metric_extractor import EvalMetricExtractor
 from log_evalmetric_extractor.logfile_reader import read_log
@@ -19,6 +15,7 @@ from logfile_evaluation_metrics.metrics.dataset_metrics.average_learning_curve_w
 from logfile_evaluation_metrics.metrics.dataset_metrics.averaged_quality_range import AverageQualityRange
 from logfile_evaluation_metrics.metrics.improvement_vs_outlier import ImprovementVsOutlier
 from logfile_evaluation_metrics.metrics.dataset_metrics.learning_curve_outlier_sampled_dropout import AverageLearningCurveDropoutOutlierSampled
+from logfile_evaluation_metrics.metrics.single_model_metric.average_learning_curve_dropout_range_with_std import AverageLearningCurvebyDropoutRangeWithStd
 from logfile_evaluation_metrics.metrics.single_model_metric.hyperparameter_eval_metric import HyperparameterEvalMetric
 from logfile_evaluation_metrics.metrics.single_model_metric.learning_curve_vs_sample import LearningCurveVsSample
 from logfile_evaluation_metrics.metrics.outlier_sampling import OutlierSampling
@@ -29,7 +26,9 @@ extractors = [HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoeff
 logged_dict = read_log(root, extractors)
 
 single_model_metric = [LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
+single_model_metric = [AverageLearningCurvebyDropoutRangeWithStd()]
 dataset_metric = [AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), AverageBestLearningCurvePlotWithStd(),AverageQualityRange(), AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance(), AverageLearningCurveWithStd()]
+dataset_metric = [AverageSamplePointDistance()]
 
 
 # print("on Dataset-Metrics")
@@ -45,3 +44,4 @@ for metric in single_model_metric:
     log_eval_runner = LogfileEvaluationMetricsRunner(single_model_metrics=[metric], dataset_metric=[])
     log_eval_runner.evaluate(logged_dict)
     print("finished: " + metric.name)
+

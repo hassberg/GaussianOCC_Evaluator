@@ -27,7 +27,7 @@ class AverageSamplePointDistance(LogfileEvaluationMetric):
             average_distances.append((model_qs, list(map(lambda x: np.mean(pdist(x)), value_list))))
 
         plt.boxplot([i[1] for i in average_distances], labels=[i[0].replace("_", "\n") for i in average_distances])
-        plt.xticks(fontsize=6, rotation=10)
+        plt.xticks(fontsize=5, rotation=340)
 
         if save_fig:
             plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
