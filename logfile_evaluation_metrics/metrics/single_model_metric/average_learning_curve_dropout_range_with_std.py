@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-class AverageLearningCurvebyDropoutRangeWithStd(LogfileEvaluationMetric):
+class AverageLearningCurveByDropoutRangeWithStd(LogfileEvaluationMetric):
     def __init__(self, ):
         self.name = "average_learning_curve_by_dropout_range_with_error_bar"
         self.moi = "Matthew Correlation Coefficient"

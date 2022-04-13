@@ -4,8 +4,9 @@ from nested_lookup import nested_lookup, get_all_keys
 
 from log_evalmetric_extractor.eval_metric_extractor import EvalMetricExtractor
 
-hyperparameter_list = ["LengthscaleLogger", "NoiseLogger", "VanishingLogger"]
+hyperparameter_list = ["NoiseLogger", "LengthscaleLogger"]
 hyperparameter_values = ["gamma", "lengthscale"]  # TODO kernel, C?
+hyperparameter_array = ["VanishingLogger"]
 
 
 class HyperparameterSelected(EvalMetricExtractor):
@@ -23,4 +24,9 @@ class HyperparameterSelected(EvalMetricExtractor):
         for key in hyperparameter_values:
             if key in get_all_keys(dictonary):
                 value_params[key] = nested_lookup(key, dictonary)
-        return [list_params, value_params]
+
+        array_params ={}
+        for key in hyperparameter_array:
+            if key in get_all_keys(dictonary):
+                array_params[key] = nested_lookup(key, dictonary)
+        return [list_params, value_params, array_params]

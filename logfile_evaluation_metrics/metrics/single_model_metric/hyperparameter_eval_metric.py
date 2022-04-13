@@ -17,9 +17,12 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
         # compare learning of k best
         list_params = []
         value_params = []
+        array_params = []
         for lst in nested_lookup("Hyperparameter", logs):
             list_params.append([x[0] for x in lst])
             value_params.append([x[1] for x in lst])
+            array_params.append([x[2] for x in lst])
+
 
         ## plot learning..
         if len(get_all_keys(list_params)) > 0:
@@ -58,3 +61,20 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
             if save_fig:
                 plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
             plt.close(fig1)
+
+        # rd..
+        params = []
+        for key in get_all_keys(array_params[0][0]):
+            params.append((key, [x[0] for i in range(len(array_params)) for x in nested_lookup(key, array_params[i][0])]))
+        for key, values in params:
+            title = "Learning Curves of Parameter.."+ key
+            plt.xlabel("Iterations")
+            plt.ylabel(key)
+            plt.title(title)
+            for value in values:
+                plt.plot(range(len(value)), value)
+
+            pdf.savefig()
+            if save_fig:
+                plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
+            plt.close()
