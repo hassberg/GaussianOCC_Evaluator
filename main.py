@@ -1,6 +1,7 @@
 from nested_lookup import nested_lookup
 from log_evalmetric_extractor.eval_metric_extractor import EvalMetricExtractor
 from log_evalmetric_extractor.logfile_reader import read_log
+from log_evalmetric_extractor.metric_extractors.certainty_to_missclassification import UncertaintyMisclassificationCorrelation
 from log_evalmetric_extractor.metric_extractors.hyperparameter_extactor import HyperparameterSelected
 from log_evalmetric_extractor.metric_extractors.matthew_correlation_coefficient_extractor import MatthewCorrelationCoefficientExtractor
 from log_evalmetric_extractor.metric_extractors.mcc_sample_extractor import MccSampleExtractor
@@ -24,7 +25,7 @@ from logfile_evaluation_metrics.metrics.single_model_metric.sample_point_distanc
 from logfile_evaluation_metrics.metrics.single_model_metric.uncertainty_confusion_dev import UncertaintyConfusionDev
 
 root = "logfiles"
-extractors = [UncertaintyConfusionCorrelationExtractor()]#, HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
+extractors = [UncertaintyMisclassificationCorrelation()]#,UncertaintyConfusionCorrelationExtractor(), HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
 logged_dict = read_log(root, extractors)
 
 single_model_metric = [UncertaintyConfusionDev(), LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
