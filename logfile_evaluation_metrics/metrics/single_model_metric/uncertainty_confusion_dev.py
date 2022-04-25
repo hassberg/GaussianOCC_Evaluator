@@ -44,47 +44,46 @@ class UncertaintyConfusionDev(LogfileEvaluationMetric):
         self.moi = "Uncertainty Confusion Correlation"
 
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
-        for key, value in logs.items():
-            plt.xlabel("Iterations")
-            plt.ylabel(self.moi)
-            title = "Uncertainty-Confusion Correlation " + str(int(key.split("-")[0]) + 1)
-            plt.title(title)
+        plt.xlabel("Iterations")
+        plt.ylabel(self.moi)
+        title = "Uncertainty-Confusion Correlation"
+        plt.title(title)
 
-            value_list = [i for sublist in nested_lookup(self.moi, value) for repeats in sublist for i in repeats]
+        value_list = [i for sublist in nested_lookup(self.moi, logs) for repeats in sublist for i in repeats]
 
-            iter = []
-            for run in value_list:
-                if iter == []:
-                    iter = [[i] for i in run]
+        iter = []
+        for run in value_list:
+            if iter == []:
+                iter = [[i] for i in run]
 
+            else:
+                for step in range(len(run)):
+                    iter[step].append(run[step])
+
+        dev_curve = []
+        if "SVDD" in save_path:
+            for i in range(len(iter)):
+                dev_curve.append(average_step_confusion_field_svdd(iter[i]))
+        else :
+            for i in range(len(iter)):
+                dev_curve.append(average_step_confusion_field(iter[i]))
+
+        certainty_curve = []
+        for i in range(len(dev_curve)):
+            step = []
+            for field in range(4):
+                if "SVDD" in save_path:
+                    step.append(dev_curve[i][field])
                 else:
-                    for step in range(len(run)):
-                        iter[step].append(run[step])
+                    step.append(calc_certainty(dev_curve[i][field][0], dev_curve[i][field][1]))  # TODO variance only?
+            certainty_curve.append(step)
 
-            dev_curve = []
-            if "SVDD" in save_path:
-                for i in range(len(iter)):
-                    dev_curve.append(average_step_confusion_field_svdd(iter[i]))
-            else :
-                for i in range(len(iter)):
-                    dev_curve.append(average_step_confusion_field(iter[i]))
+        labels = ["True Positive", "False Positive", "False Negative", "True Negative"]
+        for i in range(len(labels)):
+            plt.plot(range(1, len(certainty_curve) + 1), [pt[i] for pt in certainty_curve], label=labels[i])
 
-            certainty_curve = []
-            for i in range(len(dev_curve)):
-                step = []
-                for field in range(4):
-                    if "SVDD" in save_path:
-                        step.append(dev_curve[i][field])
-                    else:
-                        step.append(calc_certainty(dev_curve[i][field][0], dev_curve[i][field][1]))  # TODO variance only?
-                certainty_curve.append(step)
-
-            labels = ["True Positive", "False Positive", "False Negative", "True Negative"]
-            for i in range(len(labels)):
-                plt.plot(range(1, len(certainty_curve) + 1), [pt[i] for pt in certainty_curve], label=labels[i])
-
-            plt.legend(fontsize=4)
-            if save_fig:
-                plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
-            pdf.savefig()
-            plt.close()
+        plt.legend(fontsize=4)
+        if save_fig:
+            plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
+        pdf.savefig()
+        plt.close()

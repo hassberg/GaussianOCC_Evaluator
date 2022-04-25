@@ -54,7 +54,6 @@ class UncertaintyConfusionCorrelationExtractor(EvalMetricExtractor):
         self.name = "Uncertainty Confusion Correlation"
 
     def get_metrics_log(self, dictonary: dict) -> List[List]:
-        #TODO compare SVDD
 
         ## gt and uncertainty
         if "GpUncertainty" in get_all_keys(dictonary):
