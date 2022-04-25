@@ -21,6 +21,18 @@ def average_step_confusion_field(scoring):
 
     return avg
 
+def average_step_confusion_field_svdd(scoring):
+    ## Aufteilung je step in tp fp fn tn
+    avg = []
+    for field in range(4):
+        valid_points = []
+        for i in range(len(scoring)):
+            if isinstance(scoring[i][field], float):
+                valid_points.append(scoring[i][field])
+        avg.append(np.average(valid_points, axis=0))
+
+    return avg
+
 
 def calc_certainty(mean, std):
     return np.divide(np.abs(mean), np.sqrt(std))
@@ -50,14 +62,21 @@ class UncertaintyConfusionDev(LogfileEvaluationMetric):
                         iter[step].append(run[step])
 
             dev_curve = []
-            for i in range(len(iter)):
-                dev_curve.append(average_step_confusion_field(iter[i]))
+            if "SVDD" in save_path:
+                for i in range(len(iter)):
+                    dev_curve.append(average_step_confusion_field_svdd(iter[i]))
+            else :
+                for i in range(len(iter)):
+                    dev_curve.append(average_step_confusion_field(iter[i]))
 
             certainty_curve = []
             for i in range(len(dev_curve)):
                 step = []
                 for field in range(4):
-                    step.append(calc_certainty(dev_curve[i][field][0], dev_curve[i][field][1]))  # TODO variance?
+                    if "SVDD" in save_path:
+                        step.append(dev_curve[i][field])
+                    else:
+                        step.append(calc_certainty(dev_curve[i][field][0], dev_curve[i][field][1]))  # TODO variance only?
                 certainty_curve.append(step)
 
             labels = ["True Positive", "False Positive", "False Negative", "True Negative"]
