@@ -6,27 +6,24 @@ import numpy as np
 from log_evalmetric_extractor.eval_metric_extractor import EvalMetricExtractor
 
 
-def get_certainty_fraction(mean, std) -> int:
-    upper = mean + 2 * std
-    lower = mean - 2 * std
+def get_certainty_share(mean, std):
+    return np.divide(np.abs(mean), np.sqrt(2 * std))
 
-    if (upper >= 0 and lower >= 0) or (upper < 0 and lower < 0):
+
+def get_certainty_fraction(mean, std, splits) -> int:
+    share = get_certainty_share(mean, std)
+    if share >= splits[0]:
         return 0
+    elif share >= splits[1]:
+        return 1
+    elif share >= splits[2]:
+        return 2
+    elif share >= splits[3]:
+        return 3
+    elif share >= splits[4]:
+        return 4
     else:
-        uncertainty = np.absolute(lower) + np.absolute(upper)
-        share = np.maximum(np.abs(upper), np.abs(lower)) / uncertainty
-        if share >= 0.9:
-            return 0
-        elif share >= 0.8:
-            return 1
-        elif share >= 0.7:
-            return 2
-        elif share >= 0.6:
-            return 3
-        elif share >= 0.5:
-            return 4
-        else:
-            raise RuntimeError
+        raise RuntimeError
 
 
 def get_gp_result(mean, groundtruth) -> int:
@@ -36,38 +33,72 @@ def get_gp_result(mean, groundtruth) -> int:
         return 0
 
 
+def get_splits(uncertainty):
+    shares = [get_certainty_share(single[0], single[1]) for single in uncertainty]
+    shares.sort(reverse=True)
+    fractions = [0.2, 0.4, 0.6, 0.8, 1.0]
+    splits = [int(len(shares) * i) for i in fractions]
+    return [shares[np.maximum(0, i - 1)] for i in splits]
+
+
 def certainty_split(uncertainty, groundtruth):
     # 0.1, 0,2, 0.3, 0.4, else..
+    split_intervals = get_splits(uncertainty)
     split = ([], [], [], [], [])
     for i in range(len(uncertainty)):
-        split[get_certainty_fraction(uncertainty[i][0], uncertainty[i][1])].append(get_gp_result(uncertainty[i][0], groundtruth[i]))
+        split[get_certainty_fraction(uncertainty[i][0], uncertainty[i][1], split_intervals)].append(get_gp_result(uncertainty[i][0], groundtruth[i]))
 
-    return [(np.average(split[0], axis=0), len(split[0])),
-            (np.average(split[1], axis=0), len(split[1])),
-            (np.average(split[2], axis=0), len(split[2])),
-            (np.average(split[3], axis=0), len(split[3])),
-            (np.average(split[4], axis=0), len(split[4]))]
+    return [np.average(split[0], axis=0),
+            np.average(split[1], axis=0),
+            np.average(split[2], axis=0),
+            np.average(split[3], axis=0),
+            np.average(split[4], axis=0)]
 
 
-def confusion_split_svdd(uncertainty, groundtruth):  # TODO duble check if inlier have negative distance
-    split = ([], [], [], [])
+######## svdd
+
+def get_svdd_split(uncertaity):
+    shares = [np.abs(x) for x in uncertaity]
+    shares.sort(reverse=True)
+    fractions = [0.2, 0.4, 0.6, 0.8, 1.0]
+    splits = [int(len(shares) * i) for i in fractions]
+    return [shares[np.maximum(0, i - 1)] for i in splits]
+
+
+def get_svdd_certainty_fraction(dist, splits) -> int:
+    if dist >= splits[0]:
+        return 0
+    elif dist >= splits[1]:
+        return 1
+    elif dist >= splits[2]:
+        return 2
+    elif dist >= splits[3]:
+        return 3
+    elif dist >= splits[4]:
+        return 4
+    else:
+        raise RuntimeError
+
+
+def get_svdd_scoring(dist, gt):
+    if (dist <= 0 and gt == 1) or (dist > 0 and gt == -1):
+        return 1
+    else:
+        return 0
+
+
+def certainty_split_svdd(uncertainty, groundtruth):  # TODO duble check if inlier have negative distance
+    split = ([], [], [], [], [])
+    splits = get_svdd_split(uncertainty)
+
     for i in range(len(uncertainty)):
-        if uncertainty[i] <= 0 and groundtruth[i] == 1:
-            # tp
-            split[0].append(uncertainty[i])
-        elif uncertainty[i] <= 0 and groundtruth[i] == -1:
-            # fp
-            split[1].append(uncertainty[i])
-        elif uncertainty[i] > 0 and groundtruth[i] == 1:
-            # fn
-            split[2].append(uncertainty[i])
-        elif uncertainty[i] > 0 and groundtruth[i] == -1:
-            # tn
-            split[3].append(uncertainty[i])
-        else:
-            print("hää")
-    # average mean, uncertainty je step
-    return [np.average(split[0], axis=0), np.average(split[1], axis=0), np.average(split[2], axis=0), np.average(split[3], axis=0)]
+        split[get_svdd_certainty_fraction(np.abs(uncertainty[i]), splits)].append(get_svdd_scoring(np.abs(uncertainty[i]), groundtruth[i]))
+
+    return [np.average(split[0], axis=0),
+            np.average(split[1], axis=0),
+            np.average(split[2], axis=0),
+            np.average(split[3], axis=0),
+            np.average(split[4], axis=0)]
 
 
 class UncertaintyMisclassificationCorrelation(EvalMetricExtractor):
@@ -103,7 +134,7 @@ class UncertaintyMisclassificationCorrelation(EvalMetricExtractor):
                 # eval step_uncertainty
                 for step_uncertainty in uncert:
                     ## Aufteilung je step in tp fp fn tn
-                    stepwise_uncert_dev.append(confusion_split_svdd(step_uncertainty, gt))
+                    stepwise_uncert_dev.append(certainty_split_svdd(step_uncertainty, gt))
                 run_uncertainty.append(stepwise_uncert_dev)
 
             return run_uncertainty

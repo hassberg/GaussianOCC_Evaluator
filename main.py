@@ -18,6 +18,7 @@ from logfile_evaluation_metrics.metrics.dataset_metrics.averaged_quality_range i
 from logfile_evaluation_metrics.metrics.improvement_vs_outlier import ImprovementVsOutlier
 from logfile_evaluation_metrics.metrics.dataset_metrics.learning_curve_outlier_sampled_dropout import AverageLearningCurveDropoutOutlierSampled
 from logfile_evaluation_metrics.metrics.single_model_metric.average_learning_curve_dropout_range_with_std import AverageLearningCurveByDropoutRangeWithStd
+from logfile_evaluation_metrics.metrics.single_model_metric.certainty_correctness_eval import CertaintyCorrectnessEval
 from logfile_evaluation_metrics.metrics.single_model_metric.hyperparameter_eval_metric import HyperparameterEvalMetric
 from logfile_evaluation_metrics.metrics.single_model_metric.learning_curve_vs_sample import LearningCurveVsSample
 from logfile_evaluation_metrics.metrics.outlier_sampling import OutlierSampling
@@ -28,7 +29,7 @@ root = "logfiles"
 extractors = [UncertaintyMisclassificationCorrelation()]#,UncertaintyConfusionCorrelationExtractor(), HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
 logged_dict = read_log(root, extractors)
 
-single_model_metric = [UncertaintyConfusionDev(), LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
+single_model_metric = [CertaintyCorrectnessEval(), UncertaintyConfusionDev(), LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
 dataset_metric = [AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), AverageBestLearningCurvePlotWithStd(),AverageQualityRange(), AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance(), AverageLearningCurveWithStd()]
 
 
