@@ -5,6 +5,7 @@ from log_evalmetric_extractor.metric_extractors.hyperparameter_extactor import H
 from log_evalmetric_extractor.metric_extractors.matthew_correlation_coefficient_extractor import MatthewCorrelationCoefficientExtractor
 from log_evalmetric_extractor.metric_extractors.mcc_sample_extractor import MccSampleExtractor
 from log_evalmetric_extractor.metric_extractors.sampled_point import SampledPoints
+from log_evalmetric_extractor.metric_extractors.uncertainty_confusion_correlation_extractor import UncertaintyConfusionCorrelationExtractor
 from logfile_evaluation_metrics.logfile_evaluation_metrics_runner import LogfileEvaluationMetricsRunner
 from logfile_evaluation_metrics.metrics.dataset_metrics.average_best_learning_curve_plot_with_error_bar import AverageBestLearningCurvePlotWithStd
 from logfile_evaluation_metrics.metrics.dataset_metrics.average_sample_point_distance import AverageSamplePointDistance
@@ -20,12 +21,13 @@ from logfile_evaluation_metrics.metrics.single_model_metric.hyperparameter_eval_
 from logfile_evaluation_metrics.metrics.single_model_metric.learning_curve_vs_sample import LearningCurveVsSample
 from logfile_evaluation_metrics.metrics.outlier_sampling import OutlierSampling
 from logfile_evaluation_metrics.metrics.single_model_metric.sample_point_distance_by_hyperparameter_selection import SamplePointDistancesByHyperparameterSelection
+from logfile_evaluation_metrics.metrics.single_model_metric.uncertainty_confusion_dev import UncertaintyConfusionDev
 
 root = "logfiles"
-extractors = [HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
+extractors = [UncertaintyConfusionCorrelationExtractor()]#, HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
 logged_dict = read_log(root, extractors)
 
-single_model_metric = [LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
+single_model_metric = [UncertaintyConfusionDev(), LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
 dataset_metric = [AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), AverageBestLearningCurvePlotWithStd(),AverageQualityRange(), AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance(), AverageLearningCurveWithStd()]
 
 
