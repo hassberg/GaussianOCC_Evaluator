@@ -18,7 +18,7 @@ from logfile_evaluation_metrics.metrics.dataset_metrics.average_sample_point_dis
 from logfile_evaluation_metrics.metrics.single_model_metric.all_learning_curves_plot import AllLearningCurvesPlot
 from logfile_evaluation_metrics.metrics.dataset_metrics.average_best_learning_curve_plot import AverageBestLearningCurvePlot
 from logfile_evaluation_metrics.metrics.dataset_metrics.average_learning_curve_plot import AverageLearningCurvePlot
-from logfile_evaluation_metrics.metrics.dataset_metrics.average_learning_curve_with_std import AverageLearningCurveWithStd
+from logfile_evaluation_metrics.metrics.dataset_metrics.average_learning_curve_dropout import AverageLearningCurveDropout
 from logfile_evaluation_metrics.metrics.dataset_metrics.averaged_quality_range import AverageQualityRange
 from logfile_evaluation_metrics.metrics.improvement_vs_outlier import ImprovementVsOutlier
 from logfile_evaluation_metrics.metrics.dataset_metrics.learning_curve_outlier_sampled_dropout import AverageLearningCurveDropoutOutlierSampled
@@ -35,15 +35,15 @@ from logfile_evaluation_metrics.metrics.single_model_metric.weighted_mcc import 
 root = "logfiles"
 extractors = [
     # SampledPointsWithLabel(),
-    SampledLabel(),
-    SampledPoints(),
-    WeightedMccExtractor(),
-    UncertaintyConfusionCorrelationExtractor(),
-    RelativeCertaintyMisclassificationCorrelation(),
-    UncertaintyMisclassificationCorrelation(),
-    HyperparameterSelected(),
+    # SampledLabel(),
+    # SampledPoints(),
+    # WeightedMccExtractor(),
+    # UncertaintyConfusionCorrelationExtractor(),
+    # RelativeCertaintyMisclassificationCorrelation(),
+    # UncertaintyMisclassificationCorrelation(),
+    # HyperparameterSelected(),
     MatthewCorrelationCoefficientExtractor(),
-    MccSampleExtractor()
+    # MccSampleExtractor()
 ]
 
 logged_dict = read_log(root, extractors)
@@ -67,7 +67,7 @@ dataset_metric = [
     # AverageQualityRange(),
     # AverageLearningCurveDropoutOutlierSampled(),
     # AverageSamplePointDistance(),
-    AverageLearningCurveWithStd()
+    AverageLearningCurveDropout()
 ]
 
 print("on Dataset-Metrics")

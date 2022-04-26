@@ -10,9 +10,9 @@ import numpy as np
 from name_wrapper import get_qs_name, get_model_name, get_dataset_name
 
 
-class AverageLearningCurveWithStd(LogfileEvaluationMetric):
+class AverageLearningCurveDropout(LogfileEvaluationMetric):
     def __init__(self, ):
-        self.name = "average_learning_curve_with_error_bar"
+        self.name = "average_learning_curve_dropout"
         self.moi = "Matthew Correlation Coefficient"
         self.dropout_boundaries = [-1.0, 0.1, 0.2, 0.3, 0.4]
 
@@ -20,6 +20,7 @@ class AverageLearningCurveWithStd(LogfileEvaluationMetric):
         for dropout in self.dropout_boundaries:
             plt.xlabel("Learning Step")
             plt.ylabel(self.moi)
+            plt.ylim(np.min(np.min(nested_lookup("Matthew Correlation Coefficient", logs))), 1)
             title = "Average Learning Curve with initial Quality geq " + str(dropout)
 
             fig = plt.gcf()

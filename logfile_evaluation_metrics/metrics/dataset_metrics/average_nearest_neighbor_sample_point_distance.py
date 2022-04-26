@@ -17,8 +17,8 @@ class AverageNearestNeighborSamplePointDistance(LogfileEvaluationMetric):
         self.moi = "Sampled Points"
 
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
-        plt.ylabel(self.moi)
-        title = "Average Nearest Neighbor Sampled-Point distance"
+        plt.ylabel("Distance")
+        title = "Average Nearest Neighbor Distance of Queried Point"
         fig = plt.gcf()
         fig.suptitle(title, fontsize = 16)
 

@@ -38,8 +38,8 @@ class UncertaintyConfusionDev(LogfileEvaluationMetric):
 
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
         plt.xlabel("Learning Step")
-        plt.ylabel(self.moi)
-        title = "Uncertainty-Confusion Correlation"
+        plt.ylabel("Uncertainty")
+        title = "Uncertainty per Prediction case"
         fig = plt.gcf()
         fig.suptitle(title, fontsize=16)
 

@@ -17,8 +17,8 @@ class AverageOutlierSamplingRatio(LogfileEvaluationMetric):
         self.moi = "Sampled Labels"
 
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
-        plt.ylabel(self.moi)
-        title = "Average outlier sampling rate"
+        plt.ylabel("Outlier sampling ratio")
+        title = "Average Outlier Sampling Ratio"
 
         fig = plt.gcf()
         fig.suptitle(title, fontsize = 16)

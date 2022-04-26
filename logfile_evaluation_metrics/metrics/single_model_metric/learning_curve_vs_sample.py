@@ -17,14 +17,14 @@ class LearningCurveVsSample(LogfileEvaluationMetric):
     def apply_metric(self, save_path: str, logs: dict, pdf: PdfPages, save_fig: bool = False):
         fig1, ax = plt.subplots()
         plt.xlabel("Learning Step")
-        ax.set_ylabel("Mcc")
-        title = "Average Outlier Sampled vs Mcc"
+        ax.set_ylabel("Matthew Correlation Coefficient")
+        title = "Sampled Label vs Matthew Correlation Coefficient"
         fig1.suptitle(title, fontsize=16)
 
         ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=9)
 
         ax2 = ax.twinx()
-        ax2.set_ylabel("Avg Outlier Sampled")
+        ax2.set_ylabel("Average Sampled Label")
 
         value_list = [k for i in nested_lookup(self.moi, logs) for subelem in i for k in subelem]
 

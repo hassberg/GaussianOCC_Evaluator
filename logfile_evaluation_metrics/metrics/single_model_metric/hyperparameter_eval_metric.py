@@ -30,7 +30,7 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
         if len(get_all_keys(list_params)) > 0:
             plt.xlabel("Learning Step")
             plt.ylabel(self.moi)
-            title = "Learning curve of Parameters.."
+            title = "Learning curve of Hyperparameter"
             fig = plt.gcf()
             fig.suptitle(title, fontsize = 16)
 
@@ -55,7 +55,7 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
             params.append((key, [x[0] for i in range(len(value_params)) for x in nested_lookup(key, value_params[i][0])]))
         if len(params) > 0:
             fig1, ax = plt.subplots(1, len(params))
-            title = "Grid searched best Parameters.."
+            title = "Used Hyperparameter"
             fig1.suptitle(title)
             if not isinstance(ax, np.ndarray):
                 ax = [ax]

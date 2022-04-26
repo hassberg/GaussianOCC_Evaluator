@@ -19,8 +19,8 @@ class RelativeCertaintyCorrectnessEval(LogfileEvaluationMetric):
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
 
         plt.xlabel("Learning Step")
-        plt.ylabel(self.moi)
-        title = "Relative Certainty vs. Misclassification"
+        plt.ylabel("Misclassification ratio")
+        title = "Misclassification by prediction distinctiveness"
         fig = plt.gcf()
         fig.suptitle(title, fontsize=16)
 
@@ -39,8 +39,8 @@ class RelativeCertaintyCorrectnessEval(LogfileEvaluationMetric):
                 for j in range(len(value_list[i])):
                     itterations[j].append(value_list[i][j])
 
-        labels = ["90", "80", "70", "60", "50"]
-        followup = "_percent"
+        labels = ["100-90", "90-80", "80-70", "70-60", "60-50"]
+        followup = "% distinct"
         for i in range(len(labels)):
             steping = []
             for step in range(len(itterations)):

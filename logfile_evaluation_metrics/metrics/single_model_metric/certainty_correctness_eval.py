@@ -18,8 +18,8 @@ class CertaintyCorrectnessEval(LogfileEvaluationMetric):
 
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
         plt.xlabel("Learning Step")
-        plt.ylabel(self.moi)
-        title = "Uncertainty vs. Misclassification"
+        plt.ylabel("Misclassification ratio")
+        title = "Misclassification Ratio by Relative Uncertainty"
 
         fig = plt.gcf()
         fig.suptitle(title, fontsize = 16)
@@ -40,8 +40,8 @@ class CertaintyCorrectnessEval(LogfileEvaluationMetric):
                 for j in range(len(value_list[i])):
                     itterations[j].append(value_list[i][j])
 
-        labels = ["100-80", "80-60", "60-40", "40-20", "20-0"]
-        followup = "_percent"
+        labels = ["0-20", "20-40", "404-60", "60-80", "80-100"]
+        followup = "% certainty fraction"
         for i in range(len(labels)):
             steping = []
             for step in range(len(itterations)):
