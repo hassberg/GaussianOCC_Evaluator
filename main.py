@@ -1,4 +1,3 @@
-from nested_lookup import nested_lookup
 from log_evalmetric_extractor.eval_metric_extractor import EvalMetricExtractor
 from log_evalmetric_extractor.logfile_reader import read_log
 from log_evalmetric_extractor.metric_extractors.certainty_to_missclassification import UncertaintyMisclassificationCorrelation
@@ -8,6 +7,7 @@ from log_evalmetric_extractor.metric_extractors.mcc_sample_extractor import MccS
 from log_evalmetric_extractor.metric_extractors.relative_certainty_to_missclassification import RelativeCertaintyMisclassificationCorrelation
 from log_evalmetric_extractor.metric_extractors.sampled_label import SampledLabel
 from log_evalmetric_extractor.metric_extractors.sampled_point import SampledPoints
+from log_evalmetric_extractor.metric_extractors.sampled_point_with_label import SampledPointsWithLabel
 from log_evalmetric_extractor.metric_extractors.uncertainty_confusion_correlation_extractor import UncertaintyConfusionCorrelationExtractor
 from log_evalmetric_extractor.metric_extractors.weigthed_mcc_extractor import WeightedMccExtractor
 from logfile_evaluation_metrics.logfile_evaluation_metrics_runner import LogfileEvaluationMetricsRunner
@@ -33,12 +33,13 @@ from logfile_evaluation_metrics.metrics.single_model_metric.uncertainty_confusio
 from logfile_evaluation_metrics.metrics.single_model_metric.weighted_mcc import WeightedMcc
 
 root = "logfiles"
-extractors = [SampledLabel(), SampledPoints(), WeightedMccExtractor()]#, UncertaintyConfusionCorrelationExtractor(), RelativeCertaintyMisclassificationCorrelation(), UncertaintyMisclassificationCorrelation(), HyperparameterSelected(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
+extractors = [SampledPointsWithLabel(),SampledLabel(), SampledPoints(), WeightedMccExtractor(), UncertaintyConfusionCorrelationExtractor(), RelativeCertaintyMisclassificationCorrelation(),UncertaintyMisclassificationCorrelation(), HyperparameterSelected(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
 logged_dict = read_log(root, extractors)
 
-single_model_metric = [WeightedMcc(), RelativeCertaintyCorrectnessEval(), CertaintyCorrectnessEval(), UncertaintyConfusionDev(), LearningCurveVsSample(),
-                       AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
-dataset_metric = [AverageOutlierSamplingRatio(), AverageNearestNeighborSamplePointDistance(),AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), AverageBestLearningCurvePlotWithStd(), AverageQualityRange(),
+single_model_metric = [SampledPointsWithLabel(), WeightedMcc(), RelativeCertaintyCorrectnessEval(), CertaintyCorrectnessEval(), UncertaintyConfusionDev(), LearningCurveVsSample(),
+                       SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric(), AverageLearningCurveByDropoutRangeWithStd()]
+dataset_metric = [AverageOutlierSamplingRatio(), AverageNearestNeighborSamplePointDistance(), AverageLearningCurvePlot(), AverageBestLearningCurvePlot(),
+                  AverageBestLearningCurvePlotWithStd(), AverageQualityRange(),
                   AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance(), AverageLearningCurveWithStd()]
 
 print("on Dataset-Metrics")

@@ -18,7 +18,7 @@ class AverageLearningCurveByDropoutRangeWithStd(LogfileEvaluationMetric):
         for key, value in logs.items():
             plt.xlabel("Iterations")
             plt.ylabel(self.moi)
-            title = "Average Learning curve by dropout range of " + str(int(key) + 1)
+            title = "Average Learning curve by dropout range of " + str(int(key.split("-")[0]) + 1)
             plt.title(title)
 
             value_list = [i for sublist in nested_lookup(self.moi, value) for repeats in sublist for i in repeats]
