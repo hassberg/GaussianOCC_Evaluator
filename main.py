@@ -28,13 +28,13 @@ from logfile_evaluation_metrics.metrics.outlier_sampling import OutlierSampling
 from logfile_evaluation_metrics.metrics.single_model_metric.relative_certainty_correctness_eval import RelativeCertaintyCorrectnessEval
 from logfile_evaluation_metrics.metrics.single_model_metric.sample_point_distance_by_hyperparameter_selection import SamplePointDistancesByHyperparameterSelection
 from logfile_evaluation_metrics.metrics.single_model_metric.uncertainty_confusion_dev import UncertaintyConfusionDev
-from logfile_evaluation_metrics.metrics.single_model_metric.weighted_accuracy import WeightedAccuracy
+from logfile_evaluation_metrics.metrics.single_model_metric.weighted_mcc import WeightedMcc
 
 root = "logfiles"
-extractors = [SampledPoints()]#,WeightedMccExtractor(), UncertaintyConfusionCorrelationExtractor(), RelativeCertaintyMisclassificationCorrelation(), UncertaintyMisclassificationCorrelation(), HyperparameterSelected(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
+extractors = [WeightedMccExtractor()]#, SampledPoints(),UncertaintyConfusionCorrelationExtractor(), RelativeCertaintyMisclassificationCorrelation(), UncertaintyMisclassificationCorrelation(), HyperparameterSelected(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
 logged_dict = read_log(root, extractors)
 
-single_model_metric = [WeightedAccuracy(), RelativeCertaintyCorrectnessEval(), CertaintyCorrectnessEval(), UncertaintyConfusionDev(), LearningCurveVsSample(),
+single_model_metric = [WeightedMcc(), RelativeCertaintyCorrectnessEval(), CertaintyCorrectnessEval(), UncertaintyConfusionDev(), LearningCurveVsSample(),
                        AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
 dataset_metric = [AverageNearestNeighborSamplePointDistance(),AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), AverageBestLearningCurvePlotWithStd(), AverageQualityRange(),
                   AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance(), AverageLearningCurveWithStd()]

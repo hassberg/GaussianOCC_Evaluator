@@ -1,7 +1,6 @@
 import os
 
 from nested_lookup import nested_lookup
-from scipy.ndimage import label
 
 from logfile_evaluation_metrics.logfile_evaluation_metric import LogfileEvaluationMetric
 from matplotlib.backends.backend_pdf import PdfPages
@@ -9,16 +8,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-class WeightedAccuracy(LogfileEvaluationMetric):
+class WeightedMcc(LogfileEvaluationMetric):
     def __init__(self, ):
-        self.name = "weighted_accuracy_comparison"
-        self.moi = "Weighted Accuracy"
+        self.name = "weighted_mcc"
+        self.moi = "Weighted Matthew Correlation Coefficient"
 
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
         if not "SVDD" in save_path:
             plt.xlabel("Iterations")
             plt.ylabel("Accuracy")
-            title = "Weighted vs Unweighted Accuracy"
+            title = "Weighted vs Unweighted Matthew Correlation Coefficient"
             plt.title(title)
 
             value_list = [i for sublist in nested_lookup(self.moi, logs) for repeats in sublist for i in repeats]
