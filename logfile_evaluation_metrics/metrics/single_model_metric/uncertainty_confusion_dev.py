@@ -70,6 +70,6 @@ class UncertaintyConfusionDev(LogfileEvaluationMetric):
 
         plt.legend(fontsize=4)
         if save_fig:
-            plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
+            plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
         pdf.savefig()
         plt.close()

@@ -38,6 +38,6 @@ class LearningCurveVsSample(LogfileEvaluationMetric):
 
         pdf.savefig(fig1)
         if save_fig:
-            plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
+            plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
 
         plt.close(fig1)

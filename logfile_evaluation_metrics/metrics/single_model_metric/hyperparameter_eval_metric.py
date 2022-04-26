@@ -46,7 +46,7 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
             plt.legend(fontsize=5)
             pdf.savefig()
             if save_fig:
-                plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
+                plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
             plt.close()
 
         # grafik k best abs.
@@ -66,7 +66,7 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
 
             pdf.savefig(fig1)
             if save_fig:
-                plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
+                plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
             plt.close(fig1)
 
         # rd..
@@ -83,5 +83,5 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
 
             pdf.savefig()
             if save_fig:
-                plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
+                plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
             plt.close()
