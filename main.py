@@ -8,6 +8,7 @@ from log_evalmetric_extractor.metric_extractors.mcc_sample_extractor import MccS
 from log_evalmetric_extractor.metric_extractors.relative_certainty_to_missclassification import RelativeCertaintyMisclassificationCorrelation
 from log_evalmetric_extractor.metric_extractors.sampled_point import SampledPoints
 from log_evalmetric_extractor.metric_extractors.uncertainty_confusion_correlation_extractor import UncertaintyConfusionCorrelationExtractor
+from log_evalmetric_extractor.metric_extractors.weigthed_mcc_extractor import WeightedMccExtractor
 from logfile_evaluation_metrics.logfile_evaluation_metrics_runner import LogfileEvaluationMetricsRunner
 from logfile_evaluation_metrics.metrics.dataset_metrics.average_best_learning_curve_plot_with_error_bar import AverageBestLearningCurvePlotWithStd
 from logfile_evaluation_metrics.metrics.dataset_metrics.average_sample_point_distance import AverageSamplePointDistance
@@ -26,12 +27,13 @@ from logfile_evaluation_metrics.metrics.outlier_sampling import OutlierSampling
 from logfile_evaluation_metrics.metrics.single_model_metric.relative_certainty_correctness_eval import RelativeCertaintyCorrectnessEval
 from logfile_evaluation_metrics.metrics.single_model_metric.sample_point_distance_by_hyperparameter_selection import SamplePointDistancesByHyperparameterSelection
 from logfile_evaluation_metrics.metrics.single_model_metric.uncertainty_confusion_dev import UncertaintyConfusionDev
+from logfile_evaluation_metrics.metrics.single_model_metric.weighted_accuracy import WeightedAccuracy
 
 root = "logfiles"
-extractors = [UncertaintyConfusionCorrelationExtractor()]#,RelativeCertaintyMisclassificationCorrelation(),UncertaintyMisclassificationCorrelation(), HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
+extractors = [WeightedMccExtractor()]#,UncertaintyConfusionCorrelationExtractor(),RelativeCertaintyMisclassificationCorrelation(),UncertaintyMisclassificationCorrelation(), HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
 logged_dict = read_log(root, extractors)
 
-single_model_metric = [RelativeCertaintyCorrectnessEval(), CertaintyCorrectnessEval(), UncertaintyConfusionDev(), LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
+single_model_metric = [WeightedAccuracy(), RelativeCertaintyCorrectnessEval(), CertaintyCorrectnessEval(), UncertaintyConfusionDev(), LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
 dataset_metric = [AverageLearningCurvePlot(), AverageBestLearningCurvePlot(), AverageBestLearningCurvePlotWithStd(),AverageQualityRange(), AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance(), AverageLearningCurveWithStd()]
 
 
