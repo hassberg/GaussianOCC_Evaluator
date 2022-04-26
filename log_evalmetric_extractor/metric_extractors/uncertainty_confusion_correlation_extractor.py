@@ -5,30 +5,32 @@ import numpy as np
 
 from log_evalmetric_extractor.eval_metric_extractor import EvalMetricExtractor
 
+def get_uncertainty(mean, std):
+    return np.divide(np.abs(mean), np.sqrt(2 * std))
 
 def confusion_split(uncertainty, groundtruth):
-    split = ([], [], [], [])
+    split = [[], [], [], []]
     for i in range(len(uncertainty)):
         if uncertainty[i][0] >= 0 and groundtruth[i] == 1:
             # tp
-            split[0].append(uncertainty[i])
+            split[0].append(get_uncertainty(uncertainty[i][0], uncertainty[i][1]))
         elif uncertainty[i][0] >= 0 and groundtruth[i] == -1:
             # fp
-            split[1].append(uncertainty[i])
+            split[1].append(get_uncertainty(uncertainty[i][0], uncertainty[i][1]))
         elif uncertainty[i][0] < 0 and groundtruth[i] == 1:
             # fn
-            split[2].append(uncertainty[i])
+            split[2].append(get_uncertainty(uncertainty[i][0], uncertainty[i][1]))
         elif uncertainty[i][0] < 0 and groundtruth[i] == -1:
             # tn
-            split[3].append(uncertainty[i])
+            split[3].append(get_uncertainty(uncertainty[i][0], uncertainty[i][1]))
         else:
-            print("hää")
+            raise RuntimeError
     # average mean, uncertainty je step
-    return [np.average(split[0], axis=0), np.average(split[1], axis=0), np.average(split[2], axis=0), np.average(split[3], axis=0)]
+    return split
 
 
 def confusion_split_svdd(uncertainty, groundtruth):#TODO duble check if inlier have negative distance
-    split = ([], [], [], [])
+    split = [[], [], [], []]
     for i in range(len(uncertainty)):
         if uncertainty[i] <= 0 and groundtruth[i] == 1:
             # tp
@@ -45,7 +47,7 @@ def confusion_split_svdd(uncertainty, groundtruth):#TODO duble check if inlier h
         else:
             print("hää")
     # average mean, uncertainty je step
-    return [np.average(split[0], axis=0), np.average(split[1], axis=0), np.average(split[2], axis=0), np.average(split[3], axis=0)]
+    return split
 
 
 class UncertaintyConfusionCorrelationExtractor(EvalMetricExtractor):

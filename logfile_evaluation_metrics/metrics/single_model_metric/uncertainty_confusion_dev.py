@@ -9,33 +9,24 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 
-def average_step_confusion_field(scoring):
-    ## Aufteilung je step in tp fp fn tn
-    avg = []
-    for field in range(4):
-        valid_points = []
-        for i in range(len(scoring)):
-            if isinstance(scoring[i][field], np.ndarray):
-                valid_points.append(scoring[i][field])
-        avg.append(np.average(valid_points, axis=0))
-
-    return avg
-
-def average_step_confusion_field_svdd(scoring):
-    ## Aufteilung je step in tp fp fn tn
-    avg = []
-    for field in range(4):
-        valid_points = []
-        for i in range(len(scoring)):
-            if isinstance(scoring[i][field], float):
-                valid_points.append(scoring[i][field])
-        avg.append(np.average(valid_points, axis=0))
-
-    return avg
+def get_mean(list):
+    stepwise = []
+    for iteration in range(len(list)):
+        if len(list[iteration]) == 0:
+            stepwise.append(0)
+        else:
+            stepwise.append(np.mean(list[iteration]))
+    return np.asarray(stepwise)
 
 
-def calc_certainty(mean, std):
-    return np.divide(np.abs(mean), np.sqrt(std))
+def get_std(list):
+    stepwise = []
+    for iteration in range(len(list)):
+        if len(list[iteration]) == 0:
+            stepwise.append(0)
+        else:
+            stepwise.append(np.mean(list[iteration]))
+    return np.asarray(stepwise)
 
 
 class UncertaintyConfusionDev(LogfileEvaluationMetric):
@@ -60,27 +51,16 @@ class UncertaintyConfusionDev(LogfileEvaluationMetric):
                 for step in range(len(run)):
                     iter[step].append(run[step])
 
-        dev_curve = []
-        if "SVDD" in save_path:
-            for i in range(len(iter)):
-                dev_curve.append(average_step_confusion_field_svdd(iter[i]))
-        else :
-            for i in range(len(iter)):
-                dev_curve.append(average_step_confusion_field(iter[i]))
-
-        certainty_curve = []
-        for i in range(len(dev_curve)):
-            step = []
-            for field in range(4):
-                if "SVDD" in save_path:
-                    step.append(dev_curve[i][field])
-                else:
-                    step.append(calc_certainty(dev_curve[i][field][0], dev_curve[i][field][1]))  # TODO variance only?
-            certainty_curve.append(step)
-
         labels = ["True Positive", "False Positive", "False Negative", "True Negative"]
-        for i in range(len(labels)):
-            plt.plot(range(1, len(certainty_curve) + 1), [pt[i] for pt in certainty_curve], label=labels[i])
+        for field in range(len(labels)):
+            steping = []
+            for i in range(len(iter)):
+                steping.append([single for step in iter[i] for single in step[field]])
+
+            mean = get_mean(steping)
+            std = get_std(steping)
+            plt.plot(range(len(mean)), mean, label=labels[field])
+            plt.fill_between(range(len(mean)), mean + std, mean - std, alpha=0.3)
 
         plt.legend(fontsize=4)
         if save_fig:

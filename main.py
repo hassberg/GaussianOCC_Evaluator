@@ -28,7 +28,7 @@ from logfile_evaluation_metrics.metrics.single_model_metric.sample_point_distanc
 from logfile_evaluation_metrics.metrics.single_model_metric.uncertainty_confusion_dev import UncertaintyConfusionDev
 
 root = "logfiles"
-extractors = [RelativeCertaintyMisclassificationCorrelation()]#,UncertaintyMisclassificationCorrelation(),UncertaintyConfusionCorrelationExtractor(), HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
+extractors = [UncertaintyConfusionCorrelationExtractor()]#,RelativeCertaintyMisclassificationCorrelation(),UncertaintyMisclassificationCorrelation(), HyperparameterSelected(), SampledPoints(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
 logged_dict = read_log(root, extractors)
 
 single_model_metric = [RelativeCertaintyCorrectnessEval(), CertaintyCorrectnessEval(), UncertaintyConfusionDev(), LearningCurveVsSample(), AllLearningCurvesPlot(), SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric()]
