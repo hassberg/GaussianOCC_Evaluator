@@ -9,32 +9,25 @@ import numpy as np
 from sklearn.neighbors import NearestNeighbors
 
 
-class AverageNearestNeighborSamplePointDistance(LogfileEvaluationMetric):
+class AverageOutlierSamplingRatio(LogfileEvaluationMetric):
     def __init__(self):
-        self.name = "average_nearest_neighbor_sample_point_distance"
-        self.moi = "Sampled Points"
+        self.name = "average_outlier_sampling_ratio"
+        self.moi = "Sampled Labels"
 
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
         plt.ylabel(self.moi)
-        title = "Average Nearest Neighbor Sampled-Point distance"
+        title = "Average Outlier sampling rate"
         plt.title(title)
 
-        neigh = NearestNeighbors(n_neighbors=2)
-        average_distances = []
+        average_ratio = []
 
         all_lines = [(model + "_" + qs, logs[model][qs]) for model in logs.keys() for qs in logs[model]]
         for model_qs, curr_log in all_lines:
             # list contains best k runs:
             value_list = [k for i in nested_lookup(self.moi, curr_log) for subelem in i for k in subelem]
-            res_list = []
-            for run in value_list:
-                neigh.fit(run)
-                dist, _ = neigh.kneighbors(run)
-                avg_run_dist = np.average([res[1] for res in dist])
-                res_list.append(avg_run_dist)
-            average_distances.append((model_qs, res_list))
+            average_ratio.append((model_qs, np.average((np.asarray(value_list) * -1 +1 )*0.5, axis=1)))
 
-        plt.boxplot([i[1] for i in average_distances], labels=[i[0].replace("_", "\n") for i in average_distances])
+        plt.boxplot([i[1] for i in average_ratio], labels=[i[0].replace("_", "\n") for i in average_ratio])
         plt.xticks(fontsize=5, rotation=340)
 
         if save_fig:
