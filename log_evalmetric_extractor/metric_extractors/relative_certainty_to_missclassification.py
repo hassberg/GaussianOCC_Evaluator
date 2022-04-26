@@ -6,21 +6,29 @@ import numpy as np
 from log_evalmetric_extractor.eval_metric_extractor import EvalMetricExtractor
 
 
-def get_uncertainty(mean, std):
-    return np.divide(np.abs(mean), np.sqrt(2 * std))
+def get_certainty_share(mean, std):
+    lower = mean - 2* std
+    upper = mean + 2* std
+
+    if lower > 0 or upper < 0:
+        return 1.0
+    else:
+        rge = np.abs(lower) + np.abs(upper)
+        return np.maximum(np.abs(lower), np.abs(upper)) / rge
 
 
-def get_certainty_fraction(mean, std, splits) -> int:
-    share = get_uncertainty(mean, std)
-    if share >= splits[0]:
+
+def get_certainty_fraction(mean, std) -> int:
+    share = get_certainty_share(mean, std)
+    if share >= 0.9:
         return 0
-    elif share >= splits[1]:
+    elif share >= 0.8:
         return 1
-    elif share >= splits[2]:
+    elif share >= 0.7:
         return 2
-    elif share >= splits[3]:
+    elif share >= 0.6:
         return 3
-    elif share >= splits[4]:
+    elif share >= 0.5:
         return 4
     else:
         raise RuntimeError
@@ -28,31 +36,24 @@ def get_certainty_fraction(mean, std, splits) -> int:
 
 def get_gp_result(mean, groundtruth) -> int:
     if (mean >= 0 and groundtruth == 1) or (mean < 0 and groundtruth == -1):
-        return 1
-    else:
         return 0
+    else:
+        return 1
 
 
-def get_splits(uncertainty):
-    shares = [get_uncertainty(single[0], single[1]) for single in uncertainty]
-    shares.sort(reverse=True)
-    fractions = [0.2, 0.4, 0.6, 0.8, 1.0]
-    splits = [int(len(shares) * i) for i in fractions]
-    return [shares[np.maximum(0, i - 1)] for i in splits]
+def get_avg(list):
+    if len(list) == 0:
+        return 0
+    else:
+        return np.average(list)
 
 
 def certainty_split(uncertainty, groundtruth):
-    # 0.1, 0,2, 0.3, 0.4, else..
-    split_intervals = get_splits(uncertainty)
     split = ([], [], [], [], [])
     for i in range(len(uncertainty)):
-        split[get_certainty_fraction(uncertainty[i][0], uncertainty[i][1], split_intervals)].append(get_gp_result(uncertainty[i][0], groundtruth[i]))
+        split[get_certainty_fraction(uncertainty[i][0], uncertainty[i][1])].append(get_gp_result(uncertainty[i][0], groundtruth[i]))
 
-    return [np.average(split[0], axis=0),
-            np.average(split[1], axis=0),
-            np.average(split[2], axis=0),
-            np.average(split[3], axis=0),
-            np.average(split[4], axis=0)]
+    return [get_avg(split[0]), get_avg(split[1]), get_avg(split[2]), get_avg(split[3]), get_avg(split[4])]
 
 
 ######## svdd
@@ -101,10 +102,10 @@ def certainty_split_svdd(uncertainty, groundtruth):  # TODO duble check if inlie
             np.average(split[4], axis=0)]
 
 
-class UncertaintyMisclassificationCorrelation(EvalMetricExtractor):
+class RelativeCertaintyMisclassificationCorrelation(EvalMetricExtractor):
 
     def __init__(self):
-        self.name = "Uncertainty vs Misclassification"
+        self.name = "Relative Certainty vs Misclassification"
 
     def get_metrics_log(self, dictonary: dict) -> List[List]:
         ## gt and uncertainty
