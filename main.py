@@ -33,14 +33,42 @@ from logfile_evaluation_metrics.metrics.single_model_metric.uncertainty_confusio
 from logfile_evaluation_metrics.metrics.single_model_metric.weighted_mcc import WeightedMcc
 
 root = "logfiles"
-extractors = [SampledPointsWithLabel(),SampledLabel(), SampledPoints(), WeightedMccExtractor(), UncertaintyConfusionCorrelationExtractor(), RelativeCertaintyMisclassificationCorrelation(),UncertaintyMisclassificationCorrelation(), HyperparameterSelected(), MatthewCorrelationCoefficientExtractor(), MccSampleExtractor()]
+extractors = [
+    # SampledPointsWithLabel(),
+    SampledLabel(),
+    SampledPoints(),
+    WeightedMccExtractor(),
+    UncertaintyConfusionCorrelationExtractor(),
+    RelativeCertaintyMisclassificationCorrelation(),
+    UncertaintyMisclassificationCorrelation(),
+    HyperparameterSelected(),
+    MatthewCorrelationCoefficientExtractor(),
+    MccSampleExtractor()
+]
+
 logged_dict = read_log(root, extractors)
 
-single_model_metric = [SampledPointsWithLabel(), WeightedMcc(), RelativeCertaintyCorrectnessEval(), CertaintyCorrectnessEval(), UncertaintyConfusionDev(), LearningCurveVsSample(),
-                       SamplePointDistancesByHyperparameterSelection(), HyperparameterEvalMetric(), AverageLearningCurveByDropoutRangeWithStd()]
-dataset_metric = [AverageOutlierSamplingRatio(), AverageNearestNeighborSamplePointDistance(), AverageLearningCurvePlot(), AverageBestLearningCurvePlot(),
-                  AverageBestLearningCurvePlotWithStd(), AverageQualityRange(),
-                  AverageLearningCurveDropoutOutlierSampled(), AverageSamplePointDistance(), AverageLearningCurveWithStd()]
+single_model_metric = [
+    WeightedMcc(),
+    RelativeCertaintyCorrectnessEval(),
+    CertaintyCorrectnessEval(),
+    UncertaintyConfusionDev(),
+    LearningCurveVsSample(),
+    # SamplePointDistancesByHyperparameterSelection(),
+    HyperparameterEvalMetric(),
+    AverageLearningCurveByDropoutRangeWithStd()
+]
+dataset_metric = [
+    AverageOutlierSamplingRatio(),
+    AverageNearestNeighborSamplePointDistance(),
+    # AverageLearningCurvePlot(),
+    # AverageBestLearningCurvePlot(),
+    AverageBestLearningCurvePlotWithStd(),
+    # AverageQualityRange(),
+    # AverageLearningCurveDropoutOutlierSampled(),
+    AverageSamplePointDistance(),
+    AverageLearningCurveWithStd()
+]
 
 print("on Dataset-Metrics")
 for metric in dataset_metric:
