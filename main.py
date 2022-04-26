@@ -66,16 +66,16 @@ dataset_metric = [
     AverageBestLearningCurvePlotWithStd(),
     # AverageQualityRange(),
     # AverageLearningCurveDropoutOutlierSampled(),
-    AverageSamplePointDistance(),
+    # AverageSamplePointDistance(),
     AverageLearningCurveWithStd()
 ]
 
 print("on Dataset-Metrics")
-# for metric in dataset_metric:
-#     print("started: " + metric.name)
-#     log_eval_runner = LogfileEvaluationMetricsRunner(single_model_metrics=[], dataset_metric=[metric])
-#     log_eval_runner.evaluate(logged_dict)
-#     print("finished: " + metric.name)
+for metric in dataset_metric:
+    print("started: " + metric.name)
+    log_eval_runner = LogfileEvaluationMetricsRunner(single_model_metrics=[], dataset_metric=[metric])
+    log_eval_runner.evaluate(logged_dict)
+    print("finished: " + metric.name)
 
 print("on SingleModel-Metrics")
 for metric in single_model_metric:

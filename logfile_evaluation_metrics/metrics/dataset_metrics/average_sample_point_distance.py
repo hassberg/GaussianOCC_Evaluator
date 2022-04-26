@@ -7,6 +7,8 @@ from nested_lookup import nested_lookup
 import matplotlib.pyplot as plt
 import numpy as np
 
+from name_wrapper import get_qs_name, get_model_name, get_dataset_name
+
 
 class AverageSamplePointDistance(LogfileEvaluationMetric):
     def __init__(self):
@@ -15,12 +17,16 @@ class AverageSamplePointDistance(LogfileEvaluationMetric):
 
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
         plt.ylabel(self.moi)
-        title = "Average Sampled-Point distance"
-        plt.title(title)
+        title = "Average Sampled Point distance"
+        fig = plt.gcf()
+        fig.suptitle(title, fontsize = 16)
+
+        ax = plt.gca()
+        ax.set_title(get_dataset_name(save_path))
 
         average_distances = []
 
-        all_lines = [(model + "_" + qs, logs[model][qs]) for model in logs.keys() for qs in logs[model]]
+        all_lines = [(get_model_name(model) + "_" + get_qs_name(qs), logs[model][qs]) for model in logs.keys() for qs in logs[model]]
         for model_qs, curr_log in all_lines:
             # list contains best k runs:
             value_list = [k for i in nested_lookup(self.moi, curr_log) for subelem in i for k in subelem]
