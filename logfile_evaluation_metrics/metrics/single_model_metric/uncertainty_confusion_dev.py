@@ -8,6 +8,8 @@ from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
 import numpy as np
 
+from name_wrapper import get_dataset_name, get_qs_name, get_model_name
+
 
 def get_mean(list):
     stepwise = []
@@ -35,10 +37,14 @@ class UncertaintyConfusionDev(LogfileEvaluationMetric):
         self.moi = "Uncertainty Confusion Correlation"
 
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
-        plt.xlabel("Iterations")
+        plt.xlabel("Learning Step")
         plt.ylabel(self.moi)
         title = "Uncertainty-Confusion Correlation"
-        plt.title(title)
+        fig = plt.gcf()
+        fig.suptitle(title, fontsize=16)
+
+        ax = plt.gca()
+        ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=9)
 
         value_list = [i for sublist in nested_lookup(self.moi, logs) for repeats in sublist for i in repeats]
 

@@ -7,6 +7,8 @@ from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
 import numpy as np
 
+from name_wrapper import get_dataset_name, get_model_name, get_qs_name
+
 
 class AverageLearningCurveByDropoutRangeWithStd(LogfileEvaluationMetric):
     def __init__(self, ):
@@ -16,10 +18,14 @@ class AverageLearningCurveByDropoutRangeWithStd(LogfileEvaluationMetric):
 
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
         for key, value in logs.items():
-            plt.xlabel("Iterations")
+            plt.xlabel("Learning Step")
             plt.ylabel(self.moi)
             title = "Average Learning curve by dropout range of " + str(int(key.split("-")[0]) + 1)
-            plt.title(title)
+            fig = plt.gcf()
+            fig.suptitle(title, fontsize = 16)
+
+            ax = plt.gca()
+            ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=9)
 
             value_list = [i for sublist in nested_lookup(self.moi, value) for repeats in sublist for i in repeats]
 

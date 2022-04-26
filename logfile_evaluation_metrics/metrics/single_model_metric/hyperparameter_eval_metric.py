@@ -7,6 +7,8 @@ from nested_lookup import nested_lookup, get_all_keys
 from matplotlib.backends.backend_pdf import PdfPages
 import matplotlib.pyplot as plt
 
+from name_wrapper import get_dataset_name, get_qs_name, get_model_name
+
 
 class HyperparameterEvalMetric(LogfileEvaluationMetric):
     def __init__(self):
@@ -26,10 +28,15 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
 
         ## plot learning..
         if len(get_all_keys(list_params)) > 0:
-            plt.xlabel("Iterations")
+            plt.xlabel("Learning Step")
             plt.ylabel(self.moi)
             title = "Learning curve of Parameters.."
-            plt.title(title)
+            fig = plt.gcf()
+            fig.suptitle(title, fontsize = 16)
+
+            ax = plt.gca()
+            ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True))
+
             for i in range(len(list_params)):
                 ith = list_params[i]
                 for key in get_all_keys(ith[0]):
