@@ -26,7 +26,7 @@ class WeightedMcc(LogfileEvaluationMetric):
             ax = plt.gca()
             ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=9)
 
-            value_list = [i for sublist in nested_lookup(self.moi, logs) for repeats in sublist for i in repeats]
+            value_list = [i for sublist in nested_lookup(self.moi, logs["0-log-sample"]) for repeats in sublist for i in repeats]
 
             iter = []
             for run in value_list:

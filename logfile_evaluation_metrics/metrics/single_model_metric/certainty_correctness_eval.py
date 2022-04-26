@@ -22,15 +22,14 @@ class CertaintyCorrectnessEval(LogfileEvaluationMetric):
         title = "Misclassification Ratio by Relative Uncertainty"
 
         fig = plt.gcf()
-        fig.suptitle(title, fontsize = 16)
+        fig.suptitle(title, fontsize=16)
 
         ax = plt.gca()
         ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=9)
 
-
         plt.ylim(0, 1)
 
-        value_list = [i for sublist in nested_lookup(self.moi, logs) for repeats in sublist for i in repeats]
+        value_list = [i for sublist in nested_lookup(self.moi, logs["0-log-sample"]) for repeats in sublist for i in repeats]
 
         itterations = []
         for i in range(len(value_list)):

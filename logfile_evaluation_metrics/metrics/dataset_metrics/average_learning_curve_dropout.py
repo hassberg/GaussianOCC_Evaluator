@@ -24,14 +24,34 @@ class AverageLearningCurveDropout(LogfileEvaluationMetric):
             title = "Average Learning Curve with initial Quality geq " + str(dropout)
 
             fig = plt.gcf()
-            fig.suptitle(title.replace("geq", ">"), fontsize = 16)
+            fig.suptitle(title.replace("geq", ">"), fontsize=16)
 
             ax = plt.gca()
             ax.set_title(get_dataset_name(save_path))
 
             has_line = False
             all_lines = [(get_model_name(model) + "_" + get_qs_name(qs), logs[model][qs]) for model in logs.keys() for qs in logs[model]]
+
+            best_dict = {}
             for model_qs, curr_log in all_lines:
+                best_values = []
+                dict_log = {}
+                for sample, log in [(i, param_run[i]) for param_run in nested_lookup(self.moi, curr_log) for i in range(len(param_run))]:
+                    if sample in dict_log.keys():
+                        dict_log[sample].extend(log)
+                    else:
+                        dict_log[sample] = log
+                for sample_name, sample_scoring in dict_log.items():
+                    best_scoring = -2
+                    best = None
+                    for iter_scoring in sample_scoring:
+                        if iter_scoring[len(iter_scoring) - 1] - iter_scoring[0] > best_scoring:
+                            best_scoring = iter_scoring[len(iter_scoring) - 1] - iter_scoring[0]
+                            best = iter_scoring
+                    best_values.append(best)
+                best_dict[model_qs] = best_values
+
+            for model_qs, curr_log in best_dict:
                 # list contains best k runs:
                 value_list = [k for i in nested_lookup(self.moi, curr_log) for subelem in i for k in subelem]
                 filtered_values = list(filter(lambda x: x[0] >= dropout, value_list))

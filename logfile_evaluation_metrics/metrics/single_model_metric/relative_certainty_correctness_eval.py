@@ -29,7 +29,7 @@ class RelativeCertaintyCorrectnessEval(LogfileEvaluationMetric):
 
         plt.ylim(0, 1)
 
-        value_list = [i for sublist in nested_lookup(self.moi, logs) for repeats in sublist for i in repeats]
+        value_list = [i for sublist in nested_lookup(self.moi, logs["0-log-sample"]) for repeats in sublist for i in repeats]
 
         itterations = []
         for i in range(len(value_list)):

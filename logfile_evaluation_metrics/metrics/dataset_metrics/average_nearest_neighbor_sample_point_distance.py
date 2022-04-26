@@ -31,7 +31,7 @@ class AverageNearestNeighborSamplePointDistance(LogfileEvaluationMetric):
         all_lines = [(get_model_name(model) + "_" + get_qs_name(qs), logs[model][qs]) for model in logs.keys() for qs in logs[model]]
         for model_qs, curr_log in all_lines:
             # list contains best k runs:
-            value_list = [k for i in nested_lookup(self.moi, curr_log) for subelem in i for k in subelem]
+            value_list = [k for i in nested_lookup(self.moi, curr_log["0-log-sample"]) for subelem in i for k in subelem]
             res_list = []
             for run in value_list:
                 neigh.fit(run)

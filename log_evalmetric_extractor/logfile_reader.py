@@ -5,6 +5,7 @@ from typing import List
 from log_evalmetric_extractor.eval_metric_extractor import EvalMetricExtractor
 
 
+
 def read_log(root_dir: str, metric_extractors: List[EvalMetricExtractor]) -> dict:
     logs = {}
     for mode in os.listdir(root_dir):

@@ -35,15 +35,15 @@ from logfile_evaluation_metrics.metrics.single_model_metric.weighted_mcc import 
 root = "logfiles"
 extractors = [
     # SampledPointsWithLabel(),
-    SampledLabel(),
-    SampledPoints(),
-    WeightedMccExtractor(),
-    UncertaintyConfusionCorrelationExtractor(),
-    RelativeCertaintyMisclassificationCorrelation(),
-    UncertaintyMisclassificationCorrelation(),
-    HyperparameterSelected(),
+    # SampledLabel(),
+    # SampledPoints(),
+    # WeightedMccExtractor(),
+    # UncertaintyConfusionCorrelationExtractor(),
+    # RelativeCertaintyMisclassificationCorrelation(),
+    # UncertaintyMisclassificationCorrelation(),
+    # HyperparameterSelected(),
     MatthewCorrelationCoefficientExtractor(),
-    MccSampleExtractor()
+    # MccSampleExtractor()
 ]
 
 logged_dict = read_log(root, extractors)

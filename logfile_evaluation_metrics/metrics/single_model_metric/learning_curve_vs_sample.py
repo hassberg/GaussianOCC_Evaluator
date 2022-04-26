@@ -26,7 +26,7 @@ class LearningCurveVsSample(LogfileEvaluationMetric):
         ax2 = ax.twinx()
         ax2.set_ylabel("Average Sampled Label")
 
-        value_list = [k for i in nested_lookup(self.moi, logs) for subelem in i for k in subelem]
+        value_list = [k for i in nested_lookup(self.moi, logs["0-log-sample"]) for subelem in i for k in subelem]
 
         avg_mcc = np.average([i[0] for i in value_list], axis=0)
         std_mcc = np.std([i[0] for i in value_list], axis=0)
