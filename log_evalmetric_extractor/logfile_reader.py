@@ -35,7 +35,7 @@ def read_log(root_dir: str, metric_extractors: List[EvalMetricExtractor]) -> dic
 
                         if correct_file:
                             founds = {}
-                            for metric_result in [metric.get_metric_as_dict(data_object) for metric in metric_extractors]:
+                            for metric_result in [metric.get_metric_as_dict(data_object, sample) for metric in metric_extractors]:
                                 founds[metric_result[0]] = metric_result[1]
 
                             best_k = sample.split("_")[0]

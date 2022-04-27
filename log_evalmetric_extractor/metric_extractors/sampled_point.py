@@ -9,6 +9,7 @@ class SampledPoints(EvalMetricExtractor):
 
     def __init__(self):
         self.name = "Sampled Points"
+        self.best_only = True
 
     def get_metrics_log(self, dictonary: dict) -> List[List]:
         return list(map(lambda x: [i for points in x for i in points], [nested_lookup("actual_queries", i) for i in dictonary.values()]))

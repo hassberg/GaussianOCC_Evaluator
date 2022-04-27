@@ -54,6 +54,7 @@ class UncertaintyConfusionCorrelationExtractor(EvalMetricExtractor):
 
     def __init__(self):
         self.name = "Uncertainty Confusion Correlation"
+        self.best_only = True
 
     def get_metrics_log(self, dictonary: dict) -> List[List]:
 

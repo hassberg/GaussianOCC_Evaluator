@@ -13,6 +13,7 @@ class HyperparameterSelected(EvalMetricExtractor):
 
     def __init__(self):
         self.name = "Hyperparameter"
+        self.best_only = False
 
     def get_metrics_log(self, dictonary: dict) -> List[List]:
         list_params = {}

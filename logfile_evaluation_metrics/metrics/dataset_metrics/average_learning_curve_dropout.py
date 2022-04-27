@@ -51,7 +51,7 @@ class AverageLearningCurveDropout(LogfileEvaluationMetric):
                     best_values.append(best)
                 best_dict[model_qs] = best_values
 
-            for model_qs, curr_log in best_dict:
+            for model_qs, curr_log in best_dict.items():
                 # list contains best k runs:
                 value_list = [k for i in nested_lookup(self.moi, curr_log) for subelem in i for k in subelem]
                 filtered_values = list(filter(lambda x: x[0] >= dropout, value_list))

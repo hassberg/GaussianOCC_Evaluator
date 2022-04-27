@@ -45,14 +45,26 @@ class AverageBestLearningCurvePlotWithStd(LogfileEvaluationMetric):
                 best_values.append(best)
             best_dict[model_qs] = best_values
 
+        to_log = []
         for model_qs, scorings in best_dict.items():
             average_scoring = np.mean(scorings, axis=0)
             std = np.std(scorings, axis=0)
             plt.plot(range(len(average_scoring)), average_scoring, label=": ".join(model_qs.split("_")))
             plt.fill_between(range(len(average_scoring)), average_scoring - std, average_scoring + std, alpha=0.2)
+            to_log.append([model_qs, average_scoring[len(average_scoring) -1], std[len(std)-1]])
 
         plt.legend(fontsize=4)
         if save_fig:
             plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
         pdf.savefig()
         plt.close()
+
+        with open(os.path.join(os.getcwd(), save_path, "best_run.txt"), "w+") as file:
+            file.write("###############")
+            file.write("\n")
+            file.write(get_dataset_name(save_path))
+            file.write("\n")
+            for line in to_log:
+                file.write("Model: " + line[0] + ", Mean: " + str(line[1]) +", Std: " + str(line[2]))
+                file.write("\n")
+            file.write("###############")

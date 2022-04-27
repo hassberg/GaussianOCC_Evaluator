@@ -39,13 +39,13 @@ class CertaintyCorrectnessEval(LogfileEvaluationMetric):
                 for j in range(len(value_list[i])):
                     itterations[j].append(value_list[i][j])
 
-        labels = ["0-20", "20-40", "404-60", "60-80", "80-100"]
-        followup = "% certainty fraction"
+        labels = ["0-20", "20-40", "40-60", "60-80", "80-100"]
+        followup = "% certain fraction"
         for i in range(len(labels)):
             steping = []
             for step in range(len(itterations)):
                 steping.append([curr[i] for curr in itterations[step]])
-            mean = 1 - np.average(steping, axis=1)
+            mean = np.average(steping, axis=1)
             std = np.std(steping, axis=1)
             plt.plot(range(1, len(steping) + 1), mean, label=str(labels[i]) + followup)
             plt.fill_between(range(1, len(steping) + 1), mean + std, mean - std, alpha=0.2)

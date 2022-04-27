@@ -10,6 +10,7 @@ class MccSampleExtractor(EvalMetricExtractor):
 
     def __init__(self):
         self.name = "Mcc vs Sample"
+        self.best_only = True
 
     def get_metrics_log(self, dictionary: dict) -> []:
         log = []

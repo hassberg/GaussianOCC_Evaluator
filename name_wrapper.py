@@ -39,10 +39,10 @@ def get_model_name(name: str, req_prefix: bool = False):
         prefix = ""
     if "SVDDNegSurrogateModel" in name:
         return prefix + "SVDDneg"
-    elif "CustomModelBasedPriorMeanSurrogateModel" in name:
-        return prefix + "SVDDBasedMeanPriorGP"
     elif "SelfTrainingCustomModelBasedPriorMeanSurrogateModel" in name:
         return prefix + "OptimizingSVDDBasedMeanPriorGP"
+    elif "CustomModelBasedPriorMeanSurrogateModel" in name:
+        return prefix + "SVDDBasedMeanPriorGP"
     elif "ConstantPriorMeanSurrogateModel" in name:
         return prefix + "ConstantZeroPriorMeanGP"
     else:

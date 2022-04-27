@@ -35,6 +35,7 @@ class WeightedMccExtractor(EvalMetricExtractor):
 
     def __init__(self):
         self.name = "Weighted Matthew Correlation Coefficient"
+        self.best_only = True
 
     def get_metrics_log(self, dictonary: dict) -> List[List]:
         if "GpUncertainty" in get_all_keys(dictonary):
