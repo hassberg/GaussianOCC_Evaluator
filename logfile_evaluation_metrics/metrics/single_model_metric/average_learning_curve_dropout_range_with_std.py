@@ -20,12 +20,15 @@ class AverageLearningCurveByDropoutRangeWithStd(LogfileEvaluationMetric):
         for key, value in logs.items():
             plt.xlabel("Learning Step")
             plt.ylabel(self.moi)
-            title = "Average Learning curve by dropout range of " + str(int(key.split("-")[0]) + 1)
+            if key.split("-") == "0":
+                title = "Average Learning curve by initial correctness"
+            else:
+                title = "Average Learning curve by initial correctness of " + str(int(key.split("-")[0]) + 1)
             fig = plt.gcf()
-            fig.suptitle(title, fontsize = 16)
+            fig.suptitle(title, fontsize=16)
 
             ax = plt.gca()
-            ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=8)
+            ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=7)
 
             value_list = [i for sublist in nested_lookup(self.moi, value) for repeats in sublist for i in repeats]
 
@@ -34,7 +37,7 @@ class AverageLearningCurveByDropoutRangeWithStd(LogfileEvaluationMetric):
                 if len(filtered_values) >= 1:
                     average_scoring = np.mean(filtered_values, axis=0)
                     std = np.std(filtered_values, axis=0)
-                    label = "dropout " + str(self.dropout_boundaries[i]) + "<= x < " + str(self.dropout_boundaries[i+1])
+                    label = "dropout " + str(self.dropout_boundaries[i]) + "<= x < " + str(self.dropout_boundaries[i + 1])
                     plt.plot(range(len(average_scoring)), average_scoring, label=label)
                     plt.fill_between(range(len(average_scoring)), average_scoring - std, average_scoring + std, alpha=0.2)
             plt.legend(fontsize=4)

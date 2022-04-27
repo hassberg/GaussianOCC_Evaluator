@@ -22,7 +22,7 @@ class LearningCurveVsSample(LogfileEvaluationMetric):
         title = "Sampled Label vs Matthew Correlation Coefficient"
         fig1.suptitle(title, fontsize=16)
 
-        ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=8)
+        ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=7)
 
         ax2 = ax.twinx()
         ax2.set_ylabel("Average Sampled Label")
