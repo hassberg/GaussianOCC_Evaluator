@@ -19,8 +19,9 @@ class AverageNearestNeighborSamplePointDistance(LogfileEvaluationMetric):
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
         plt.ylabel("Distance")
         title = "Average Nearest Neighbor Distance of Queried Point"
+        plt.autoscale()
         fig = plt.gcf()
-        fig.suptitle(title, fontsize = 16)
+        fig.suptitle(title, fontsize=16)
 
         ax = plt.gca()
         ax.set_title(get_dataset_name(save_path))
@@ -41,9 +42,23 @@ class AverageNearestNeighborSamplePointDistance(LogfileEvaluationMetric):
             average_distances.append((model_qs, res_list))
 
         plt.boxplot([i[1] for i in average_distances], labels=[i[0].replace("_", "\n") for i in average_distances])
-        plt.xticks(fontsize=6)
+        plt.xticks(fontsize=5, rotation=17)
 
         if save_fig:
             plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
         pdf.savefig()
         plt.close()
+
+        to_log = []
+        for model in average_distances:
+            to_log.append([model[0], np.average(model[1]), np.std(model[1])])
+
+        with open(os.path.join(os.getcwd(), save_path, "point_dist.txt"), "w+") as file:
+            file.write("###############")
+            file.write("\n")
+            file.write(get_dataset_name(save_path))
+            file.write("\n")
+            for line in to_log:
+                file.write("Model: " + line[0] + ", Mean: " + str(line[1]) + ", Std: " + str(line[2]))
+                file.write("\n")
+            file.write("###############")

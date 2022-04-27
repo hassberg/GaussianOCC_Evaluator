@@ -19,6 +19,7 @@ class AverageOutlierSamplingRatio(LogfileEvaluationMetric):
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
         plt.ylabel("Outlier sampling ratio")
         title = "Average Outlier Sampling Ratio"
+        plt.autoscale()
 
         fig = plt.gcf()
         fig.suptitle(title, fontsize = 16)
@@ -35,9 +36,23 @@ class AverageOutlierSamplingRatio(LogfileEvaluationMetric):
             average_ratio.append((model_qs, np.average((np.asarray(value_list) * -1 +1 )*0.5, axis=1)))
 
         plt.boxplot([i[1] for i in average_ratio], labels=[i[0].replace("_", "\n") for i in average_ratio])
-        plt.xticks(fontsize=6)
+        plt.xticks(fontsize=5, rotation=17)
 
         if save_fig:
             plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
         pdf.savefig()
         plt.close()
+
+        to_log = []
+        for model in average_ratio:
+            to_log.append([model[0], np.average(model[1]), np.std(model[1])])
+
+        with open(os.path.join(os.getcwd(), save_path, "os_rate.txt"), "w+") as file:
+            file.write("###############")
+            file.write("\n")
+            file.write(get_dataset_name(save_path))
+            file.write("\n")
+            for line in to_log:
+                file.write("Model: " + line[0] + ", Mean: " + str(line[1]) +", Std: " + str(line[2]))
+                file.write("\n")
+            file.write("###############")

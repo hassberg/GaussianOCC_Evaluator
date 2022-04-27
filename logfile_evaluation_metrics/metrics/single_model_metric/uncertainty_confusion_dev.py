@@ -44,7 +44,7 @@ class UncertaintyConfusionDev(LogfileEvaluationMetric):
         fig.suptitle(title, fontsize=16)
 
         ax = plt.gca()
-        ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=9)
+        ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=8)
 
         value_list = [i for sublist in nested_lookup(self.moi, logs["0-log-sample"]) for repeats in sublist for i in repeats]
 
@@ -68,7 +68,7 @@ class UncertaintyConfusionDev(LogfileEvaluationMetric):
             plt.plot(range(len(mean)), mean, label=labels[field])
             plt.fill_between(range(len(mean)), mean + std, mean - std, alpha=0.3)
 
-        plt.legend(fontsize=4)
+        plt.legend(fontsize=7)
         if save_fig:
             plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
         pdf.savefig()

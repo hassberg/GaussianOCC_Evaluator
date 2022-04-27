@@ -25,7 +25,7 @@ class CertaintyCorrectnessEval(LogfileEvaluationMetric):
         fig.suptitle(title, fontsize=16)
 
         ax = plt.gca()
-        ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=9)
+        ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=8)
 
         plt.ylim(0, 1)
 
@@ -50,7 +50,7 @@ class CertaintyCorrectnessEval(LogfileEvaluationMetric):
             plt.plot(range(1, len(steping) + 1), mean, label=str(labels[i]) + followup)
             plt.fill_between(range(1, len(steping) + 1), mean + std, mean - std, alpha=0.2)
 
-        plt.legend(fontsize=4)
+        plt.legend(fontsize=7)
         if save_fig:
             plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
         pdf.savefig()
