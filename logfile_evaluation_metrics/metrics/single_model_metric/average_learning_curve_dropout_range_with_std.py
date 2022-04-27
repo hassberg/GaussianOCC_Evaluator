@@ -14,13 +14,13 @@ class AverageLearningCurveByDropoutRangeWithStd(LogfileEvaluationMetric):
     def __init__(self, ):
         self.name = "average_learning_curve_by_dropout_range_with_error_bar"
         self.moi = "Matthew Correlation Coefficient"
-        self.dropout_boundaries = [-1.0, 0.0, 0.1, 0.3, 0.4, 1.0]
+        self.dropout_boundaries = [-1.0, 0.0, 0.2, 0.4, 1.0]
 
     def apply_metric(self, save_path, logs: dict, pdf: PdfPages, save_fig: bool = False):
         for key, value in logs.items():
             plt.xlabel("Learning Step")
             plt.ylabel(self.moi)
-            if key.split("-") == "0":
+            if key.split("-")[0] == "0":
                 title = "Average Learning curve by initial correctness"
             else:
                 title = "Average Learning curve by initial correctness of " + str(int(key.split("-")[0]) + 1)
