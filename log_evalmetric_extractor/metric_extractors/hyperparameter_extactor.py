@@ -4,8 +4,8 @@ from nested_lookup import nested_lookup, get_all_keys
 
 from log_evalmetric_extractor.eval_metric_extractor import EvalMetricExtractor
 
-hyperparameter_list = ["NoiseLogger", "LengthscaleLogger"]
-hyperparameter_values = ["gamma", "lengthscale"]  # TODO kernel, C?
+hyperparameter_list = ["LengthscaleLogger"]
+hyperparameter_values = ["gamma", "lengthscale", "C"]  # TODO kernel, C?
 hyperparameter_array = ["VanishingLogger"]
 
 

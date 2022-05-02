@@ -10,6 +10,19 @@ import numpy as np
 from name_wrapper import get_dataset_name, get_model_name, get_qs_name
 
 
+def get_color(label):
+    if "-1.0 <=" in label:
+        return 'r'
+    elif "0.0 <=" in label:
+        return 'g'
+    elif "0.2 <=" in label:
+        return 'b'
+    elif "0.4 <=" in label:
+        return 'y'
+    else:
+        raise RuntimeError
+
+
 class AverageLearningCurveByDropoutRangeWithStd(LogfileEvaluationMetric):
     def __init__(self, ):
         self.name = "average_learning_curve_by_dropout_range_with_error_bar"
@@ -37,9 +50,9 @@ class AverageLearningCurveByDropoutRangeWithStd(LogfileEvaluationMetric):
                 if len(filtered_values) >= 1:
                     average_scoring = np.mean(filtered_values, axis=0)
                     std = np.std(filtered_values, axis=0)
-                    label = "dropout " + str(self.dropout_boundaries[i]) + "<= x < " + str(self.dropout_boundaries[i + 1])
-                    plt.plot(range(len(average_scoring)), average_scoring, label=label)
-                    plt.fill_between(range(len(average_scoring)), average_scoring - std, average_scoring + std, alpha=0.2)
+                    label = "Dropout: " + str(self.dropout_boundaries[i]) + " <= x < " + str(self.dropout_boundaries[i + 1])
+                    plt.plot(range(len(average_scoring)), average_scoring, get_color(label),label=label)
+                    plt.fill_between(range(len(average_scoring)), average_scoring - std, average_scoring + std, color=get_color(label), alpha=0.2)
             plt.legend(fontsize=4)
             if save_fig:
                 plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))

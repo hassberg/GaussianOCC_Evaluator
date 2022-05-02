@@ -40,12 +40,13 @@ def get_certainty_fraction_split(uncertainty, groundtruth, model):
     splited = [[], [], [], [], []]
     size = len(scores) / 5
     for i in range(len(scores)):
-        splited[np.minimum(int(i / size), 4)].append(scores[i][1])
-    return [np.average(splited[0]),
-            np.average(splited[1]),
-            np.average(splited[2]),
-            np.average(splited[3]),
-            np.average(splited[4]),
+        splited[np.minimum(int(i / size), 4)].append([scores[i][0], scores[i][1]])
+    return [
+        (np.average([i[0] for i in splited[0]]), np.average([i[1] for i in splited[0]])),
+        (np.average([i[0] for i in splited[1]]), np.average([i[1] for i in splited[1]])),
+        (np.average([i[0] for i in splited[2]]), np.average([i[1] for i in splited[2]])),
+        (np.average([i[0] for i in splited[3]]), np.average([i[1] for i in splited[3]])),
+        (np.average([i[0] for i in splited[4]]), np.average([i[1] for i in splited[4]])),
             ]
 
 

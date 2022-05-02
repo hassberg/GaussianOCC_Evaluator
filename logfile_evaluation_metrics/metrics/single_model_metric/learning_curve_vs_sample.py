@@ -27,14 +27,29 @@ class LearningCurveVsSample(LogfileEvaluationMetric):
         ax2 = ax.twinx()
         ax2.set_ylabel("Average Sampled Label")
 
-        value_list = [k for i in nested_lookup(self.moi, logs["0-log-sample"]) for subelem in i for k in subelem]
+        best_values = []
+        dict_log = {}
+        for sample, log in [(i, param_run[i]) for param_run in nested_lookup(self.moi, logs) for i in range(len(param_run))]:
+            if sample in dict_log.keys():
+                dict_log[sample].extend(log)
+            else:
+                dict_log[sample] = log
+        for sample_name, sample_scoring in dict_log.items():
+            best_scoring = -2
+            best = None
+            for iter_scoring in sample_scoring:
+                if iter_scoring[0][len(iter_scoring[0]) - 1] > best_scoring:
+                    best_scoring = iter_scoring[0][len(iter_scoring[0]) - 1]
+                    best = iter_scoring
+            best_values.append(best)
 
-        avg_mcc = np.average([i[0] for i in value_list], axis=0)
-        std_mcc = np.std([i[0] for i in value_list], axis=0)
+
+        avg_mcc = np.average([i[0] for i in best_values], axis=0)
+        std_mcc = np.std([i[0] for i in best_values], axis=0)
         ax.plot(range(len(avg_mcc)), avg_mcc, label="mcc")
         ax.fill_between(range(len(avg_mcc)), avg_mcc + std_mcc, avg_mcc - std_mcc, alpha=0.2)
 
-        avg_sample = np.average([i[1] for i in value_list], axis=0)
+        avg_sample = np.average([i[1] for i in best_values], axis=0)
         ax2.plot([i + 1 for i in range(len(avg_sample))], avg_sample, '--', label="sample")
 
         pdf.savefig(fig1)

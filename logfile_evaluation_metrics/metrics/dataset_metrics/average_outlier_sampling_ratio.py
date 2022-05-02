@@ -33,7 +33,7 @@ class AverageOutlierSamplingRatio(LogfileEvaluationMetric):
         for model_qs, curr_log in all_lines:
             # list contains best k runs:
             value_list = [k for i in nested_lookup(self.moi, curr_log["0-log-sample"]) for subelem in i for k in subelem]
-            average_ratio.append((model_qs, np.average((np.asarray(value_list) * -1 +1 )*0.5, axis=1)))
+            average_ratio.append((model_qs, np.sum((np.asarray(value_list) * -1 +1 )*0.5, axis=1)))
 
         plt.boxplot([i[1] for i in average_ratio], labels=[i[0].replace("_", "\n") for i in average_ratio])
         plt.xticks(fontsize=5, rotation=17)

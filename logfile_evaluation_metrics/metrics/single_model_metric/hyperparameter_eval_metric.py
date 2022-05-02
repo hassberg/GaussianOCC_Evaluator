@@ -25,17 +25,16 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
             value_params.append([x[1] for x in lst])
             array_params.append([x[2] for x in lst])
 
-
         ## plot learning..
         if len(get_all_keys(list_params)) > 0:
             plt.xlabel("Learning Step")
             plt.ylabel(self.moi)
             title = "Learning curve of Hyperparameter"
             fig = plt.gcf()
-            fig.suptitle(title, fontsize = 16)
+            fig.suptitle(title, fontsize=16)
 
             ax = plt.gca()
-            ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True))
+            ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=7)
 
             for i in range(len(list_params)):
                 ith = list_params[i]
@@ -43,7 +42,7 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
                     mean = np.mean([m for x in ith for l in nested_lookup(key, x) for m in l], axis=0)
                     plt.plot(range(len(mean)), mean, label=str(i + 1) + "-" + key)
 
-            plt.legend(fontsize=5)
+            plt.legend(fontsize=7)
             pdf.savefig()
             if save_fig:
                 plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
@@ -74,7 +73,7 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
         for key in get_all_keys(array_params[0][0]):
             params.append((key, [x[0] for i in range(len(array_params)) for x in nested_lookup(key, array_params[i][0])]))
         for key, values in params:
-            title = "Learning Curves of Parameter.."+ key
+            title = "Learning Curves of Parameter.." + key
             plt.xlabel("Iterations")
             plt.ylabel(key)
             plt.title(title)

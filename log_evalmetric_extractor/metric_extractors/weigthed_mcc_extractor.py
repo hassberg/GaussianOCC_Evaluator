@@ -35,11 +35,12 @@ class WeightedMccExtractor(EvalMetricExtractor):
 
     def __init__(self):
         self.name = "Weighted Matthew Correlation Coefficient"
-        self.best_only = True
+        self.best_only = False
 
+    #(weighted, unweighted)
     def get_metrics_log(self, dictonary: dict) -> List[List]:
         if "GpUncertainty" in get_all_keys(dictonary):
-            uncertainty_measures = nested_lookup("GpUncertainty", dictonary)  # containts measures of both runs
+            uncertainty_measures = nested_lookup("GpUncertainty", dictonary)  # contains measures of both runs
             ground_truth = nested_lookup("GroundTruthLogger", dictonary)
 
             run_accuracy = []

@@ -45,8 +45,8 @@ class AverageLearningCurveDropout(LogfileEvaluationMetric):
                     best_scoring = -2
                     best = None
                     for iter_scoring in sample_scoring:
-                        if iter_scoring[len(iter_scoring) - 1] - iter_scoring[0] > best_scoring:
-                            best_scoring = iter_scoring[len(iter_scoring) - 1] - iter_scoring[0]
+                        if iter_scoring[len(iter_scoring) - 1] > best_scoring:
+                            best_scoring = iter_scoring[len(iter_scoring) - 1]
                             best = iter_scoring
                     best_values.append(best)
                 best_dict[model_qs] = best_values
