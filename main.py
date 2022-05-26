@@ -36,46 +36,46 @@ from logfile_evaluation_metrics.metrics.single_model_metric.uncertainty_confusio
 from logfile_evaluation_metrics.metrics.single_model_metric.weighted_mcc import WeightedMcc
 
 # root = "C:\\Users\\User\\Desktop\\output"
-root = "C:\\Users\\User\\Desktop\\final_output"
-# root = "logfiles"
+# root = "C:\\Users\\User\\Desktop\\final_output"
+root = "logfiles"
 extractors = [
-    # SampledPointsWithLabel(),
-    # SampledLabel(),
-    # SampledPoints(),
-    # WeightedMccExtractor(),
-    # UncertaintyConfusionCorrelationExtractor(),
-    # RelativeCertaintyMisclassificationCorrelation(),
-    # UncertaintyMisclassificationCorrelation(),
-    # HyperparameterSelected(),
+        # SampledPointsWithLabel(),
+        # SampledLabel(),
+        SampledPoints(),
+        WeightedMccExtractor(),
+        # UncertaintyConfusionCorrelationExtractor(),
+    RelativeCertaintyMisclassificationCorrelation(),
+        UncertaintyMisclassificationCorrelation(),
+    HyperparameterSelected(),
     MatthewCorrelationCoefficientExtractor(),
-    # MccSampleExtractor()
+        # MccSampleExtractor()
 ]
 
 logged_dict = read_log(root, extractors)
 
 single_model_metric = [
-    # WeightedMcc(),
-    # RelativeCertaintyCorrectnessEval(),
-    CertaintyCorrectnessEval(),
-    UncertaintyConfusionDev(),
-    LearningCurveVsSample(),
-    # SamplePointDistancesByHyperparameterSelection(),
+        WeightedMcc(),
+    RelativeCertaintyCorrectnessEval(),  # Distinctiveness
+        CertaintyCorrectnessEval(),
+        # UncertaintyConfusionDev(),
+        # LearningCurveVsSample(),
+        # SamplePointDistancesByHyperparameterSelection(),
     HyperparameterEvalMetric(),
-    # AverageLearningCurveByDropoutRangeWithStd()
+        # AverageLearningCurveByDropoutRangeWithStd()
 ]
 dataset_metric = [
-    AverageOutlierSamplingRatio(),
-    AverageNearestNeighborSamplePointDistance(),
-    HyperparametreLogger(),
-    DistinctivenessLogger(),
-    WeightedLogger(),
-    # AverageLearningCurvePlot(),
-    # AverageBestLearningCurvePlot(),
+        AverageOutlierSamplingRatio(),
+        AverageNearestNeighborSamplePointDistance(),
+        # HyperparametreLogger(),
+        # DistinctivenessLogger(),
+        WeightedLogger(),
+        # AverageLearningCurvePlot(),
+        # AverageBestLearningCurvePlot(),
     AverageBestLearningCurvePlotWithStd(),
-    # AverageQualityRange(),
-    # AverageLearningCurveDropoutOutlierSampled(),
-    # AverageSamplePointDistance(),
-    # AverageLearningCurveDropout()
+        # AverageQualityRange(),
+        # AverageLearningCurveDropoutOutlierSampled(),
+        # AverageSamplePointDistance(),
+        # AverageLearningCurveDropout()
 ]
 
 print("on Dataset-Metrics")
@@ -85,9 +85,9 @@ for metric in dataset_metric:
     log_eval_runner.evaluate(logged_dict)
     print("finished: " + metric.name)
 
-# print("on SingleModel-Metrics")
-# for metric in single_model_metric:
-#     print("started: " + metric.name)
-#     log_eval_runner = LogfileEvaluationMetricsRunner(single_model_metrics=[metric], dataset_metric=[])
-#     log_eval_runner.evaluate(logged_dict)
-#     print("finished: " + metric.name)
+print("on SingleModel-Metrics")
+for metric in single_model_metric:
+    print("started: " + metric.name)
+    log_eval_runner = LogfileEvaluationMetricsRunner(single_model_metrics=[metric], dataset_metric=[])
+    log_eval_runner.evaluate(logged_dict)
+    print("finished: " + metric.name)

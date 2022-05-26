@@ -13,21 +13,21 @@ def get_dataset_name(name: str):
     elif "page-blocks-1" in name:
         return prefix + "Pageblocks"
     elif "svmguide1-0" in name:
-        return prefix + "SVM-Guide1_0"
+        return prefix + "SVM-Guide1: 0"
     elif "svmguide1-1" in name:
-        return prefix + "SVM-Guide1_1"
+        return prefix + "SVM-Guide1: 1"
     elif "waveform-0" in name:
-        return prefix + "Waveform_0"
+        return prefix + "Waveform: 0"
     elif "waveform-1" in name:
-        return prefix + "Waveform_1"
+        return prefix + "Waveform: 1"
     elif "wdbc-B" in name:
         return prefix + "wdbc"
     elif "wpbc-N" in name:
         return prefix + "wpbc"
     elif "yeast-CYT" in name:
-        return prefix + "Yeast_CYT"
+        return prefix + "Yeast: CYT"
     elif "yeast-NUC" in name:
-        return prefix + "Yeast_NUC"
+        return prefix + "Yeast: NUC"
     else:
         raise RuntimeError
 
@@ -44,7 +44,7 @@ def get_model_name(name: str, req_prefix: bool = False):
     elif "CustomModelBasedPriorMeanSurrogateModel" in name:
         return prefix + "SVDDBasedMeanPriorGP"
     elif "ConstantPriorMeanSurrogateModel" in name:
-        return prefix + "ConstantZeroPriorMeanGP"
+        return prefix + "ConstantZeroMeanPriorGP"
     else:
         raise RuntimeError
 

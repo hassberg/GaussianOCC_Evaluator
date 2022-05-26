@@ -43,7 +43,7 @@ class CertaintyCorrectnessEval(LogfileEvaluationMetric):
                     itterations[j].append([p[1] for p in value_list[i][j]])
 
         end_uncert = np.average([[i[0][0], i[1][0], i[2][0], i[3][0], i[4][0], ] for i in [i[len(value_list)-1] for i in value_list ]], axis = 0)
-        followup = ". Uncertainty Group"
+        followup = ". Certainty Group"
         for i in range(5):
             steping = []
             for step in range(len(itterations)):

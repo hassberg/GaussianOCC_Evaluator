@@ -40,9 +40,9 @@ class HyperparameterEvalMetric(LogfileEvaluationMetric):
                 ith = list_params[i]
                 for key in get_all_keys(ith[0]):
                     mean = np.mean([m for x in ith for l in nested_lookup(key, x) for m in l], axis=0)
-                    plt.plot(range(len(mean)), mean, label=str(i + 1) + "-" + key)
+                    plt.plot(range(len(mean)), mean, label=str(i + 1) + ". " + key.replace("LengthscaleLogger", "optimized Lengthscale"))
 
-            plt.legend(fontsize=7)
+            plt.legend(fontsize=9)
             pdf.savefig()
             if save_fig:
                 plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))

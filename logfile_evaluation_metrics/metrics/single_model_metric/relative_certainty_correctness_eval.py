@@ -28,7 +28,7 @@ class RelativeCertaintyCorrectnessEval(LogfileEvaluationMetric):
         ax = plt.gca()
         ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=7)
 
-        plt.ylim(0, 1)
+        plt.ylim(0, 0.99)
         value_list = [i for sublist in nested_lookup(self.moi, logs["0-log-sample"]) for repeats in sublist for i in repeats]
 
         itterations = []
@@ -41,7 +41,7 @@ class RelativeCertaintyCorrectnessEval(LogfileEvaluationMetric):
 
         labels = ["100-90", "90-80", "80-70", "70-60", "60-50"]
         size = []
-        followup = "% inconsistency fraction"
+        followup = "% distinctiveness prediction"
         for i in range(len(labels)):
             steping = []
             sz = []
@@ -63,7 +63,8 @@ class RelativeCertaintyCorrectnessEval(LogfileEvaluationMetric):
 
         plt.figure()
         plt.xlabel("Learning Step")
-        plt.ylabel("Fraction Size")
+        plt.ylabel("Fraction")
+        plt.ylim(0, 0.99)
         # plt.yscale("log")
         title = "Relative Certain fraction size"
         fig = plt.gcf()
@@ -72,12 +73,19 @@ class RelativeCertaintyCorrectnessEval(LogfileEvaluationMetric):
         ax = plt.gca()
         ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=7)
 
+        maxs = []
+        for iter in range(len(size[0][0])):
+            sum = 0
+            for i in range(5):
+                sum += size[i][0][iter]
+            maxs.append(sum)
 
+        maxs = np.asarray(maxs)
         for i in range(len(labels)):
-            pre = "Average size of "
-            followup = " certain fraction"
-            mean = np.asarray([pt for pt in size[i][0]])
-            std = np.asarray([pt for pt in size[i][1]])
+            pre = "Average share of "
+            followup = " % distinct prediction"
+            mean = np.asarray([pt for pt in size[i][0]]) / np.asarray(maxs)
+            std = np.asarray([pt for pt in size[i][1]]) / maxs
             plt.plot(range(1, len(mean) + 1), mean, label=pre + str(labels[i]) + followup)
             plt.fill_between(range(1, len(mean) + 1), mean + std, mean - std, alpha=0.3)
 

@@ -32,7 +32,7 @@ def get_certainty_fraction_split(uncertainty, groundtruth, model):
             score = get_gp_result(uncertainty[i][0], groundtruth[i])
         elif model == "SVDD":
             certainty_fraction = np.abs(uncertainty[i])
-            score = get_svdd_scoring(np.abs(uncertainty[i]), groundtruth[i])
+            score = get_svdd_scoring(uncertainty[i], groundtruth[i])
         else:
             raise RuntimeError
         scores.append([certainty_fraction, score])

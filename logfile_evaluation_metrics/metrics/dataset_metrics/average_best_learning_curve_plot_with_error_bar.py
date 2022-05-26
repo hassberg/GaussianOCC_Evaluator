@@ -23,7 +23,7 @@ class AverageBestLearningCurvePlotWithStd(LogfileEvaluationMetric):
         fig.suptitle(title, fontsize=16)
 
         ax = plt.gca()
-        ax.set_title(get_dataset_name(save_path))
+        # ax.set_title(get_dataset_name(save_path))
 
         all_lines = [(get_model_name(model) + "_" + get_qs_name(qs), logs[model][qs]) for model in logs.keys() for qs in logs[model]]
 
