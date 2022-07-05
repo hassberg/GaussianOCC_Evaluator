@@ -28,70 +28,31 @@ class RelativeCertaintyCorrectnessEval(LogfileEvaluationMetric):
         ax = plt.gca()
         ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=7)
 
-        plt.ylim(0, 0.99)
         value_list = [i for sublist in nested_lookup(self.moi, logs["0-log-sample"]) for repeats in sublist for i in repeats]
 
-        itterations = []
+        mis_rate = []
         for i in range(len(value_list)):
-            if itterations == []:
-                itterations = [[i] for i in value_list[0]]
+            if mis_rate == []:
+                lst = value_list[i]
+                mis_rate = [[i[0]] for i in lst]
             else:
                 for j in range(len(value_list[i])):
-                    itterations[j].append(value_list[i][j])
+                    mis_rate[j].append(value_list[i][j][0])
 
-        labels = ["100-90", "90-80", "80-70", "70-60", "60-50"]
-        size = []
-        followup = "% distinctiveness prediction"
-        for i in range(len(labels)):
-            steping = []
-            sz = []
-            for step in range(len(itterations)):
-                steping.append([curr[i][0] for curr in itterations[step]])
-                sz.append([curr[i][1] for curr in itterations[step]])
-            mean = np.average(steping, axis=1)
-            std = np.std(steping, axis=1)
-            size.append([np.average(sz, axis=1), np.std(sz, axis=1)])
-            plt.plot(range(1, len(steping) + 1), mean, label=str(labels[i]) + followup)
-            plt.fill_between(range(1, len(steping) + 1), mean + std, mean - std, alpha=0.3)
+        mean = np.average(mis_rate, axis=1)
+        std = np.std(mis_rate, axis=1)
+        x = (0.5, 0.65, 0.75, 0.85, 1.0)
 
-        plt.legend(fontsize=7)
-        if save_fig:
-            plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
-        pdf.savefig()
+        x = (1.0, 0.95, 0.85, 0.75, 0.65, 0.55, 0.5)
+        mean = np.asarray([mean[0], mean[0], mean[1], mean[2], mean[3], mean[4], mean[4]])
+        std = np.asarray([std[0], std[0], std[1], std[2], std[3], std[4], std[4]])
 
-        plt.close()
+        plt.plot(x, mean)
+        plt.fill_between(x, mean + std, mean - std, alpha=0.2)
 
-        plt.figure()
-        plt.xlabel("Learning Step")
-        plt.ylabel("Fraction")
-        plt.ylim(0, 0.99)
-        # plt.yscale("log")
-        title = "Relative Certain fraction size"
-        fig = plt.gcf()
-        fig.suptitle(title, fontsize=16)
 
-        ax = plt.gca()
-        ax.set_title(get_dataset_name(save_path) + ", " + get_model_name(save_path, True) + ", " + get_qs_name(save_path, True), fontsize=7)
-
-        maxs = []
-        for iter in range(len(size[0][0])):
-            sum = 0
-            for i in range(5):
-                sum += size[i][0][iter]
-            maxs.append(sum)
-
-        maxs = np.asarray(maxs)
-        for i in range(len(labels)):
-            pre = "Average share of "
-            followup = " % distinct prediction"
-            mean = np.asarray([pt for pt in size[i][0]]) / np.asarray(maxs)
-            std = np.asarray([pt for pt in size[i][1]]) / maxs
-            plt.plot(range(1, len(mean) + 1), mean, label=pre + str(labels[i]) + followup)
-            plt.fill_between(range(1, len(mean) + 1), mean + std, mean - std, alpha=0.3)
-
-        plt.legend(fontsize=7)
-        if save_fig:
-            plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".pdf"))
-        pdf.savefig()
+        # if save_fig:
+        plt.savefig(os.path.join(save_path, title.lower().replace(" ", "_") + ".svg"))
+        # pdf.savefig()
 
         plt.close()

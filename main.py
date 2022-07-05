@@ -41,13 +41,13 @@ root = "logfiles"
 extractors = [
         # SampledPointsWithLabel(),
         # SampledLabel(),
-        SampledPoints(),
-        WeightedMccExtractor(),
+        # SampledPoints(),
+        # WeightedMccExtractor(),
         # UncertaintyConfusionCorrelationExtractor(),
-    RelativeCertaintyMisclassificationCorrelation(),
-        UncertaintyMisclassificationCorrelation(),
-    HyperparameterSelected(),
-    MatthewCorrelationCoefficientExtractor(),
+    RelativeCertaintyMisclassificationCorrelation(), # distinct
+        # UncertaintyMisclassificationCorrelation(),
+    # HyperparameterSelected(),
+    # MatthewCorrelationCoefficientExtractor(),
         # MccSampleExtractor()
 ]
 

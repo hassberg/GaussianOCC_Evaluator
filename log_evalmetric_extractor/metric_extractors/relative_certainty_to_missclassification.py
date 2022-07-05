@@ -70,12 +70,7 @@ class RelativeCertaintyMisclassificationCorrelation(EvalMetricExtractor):
             run_uncertainty = []
             # iterate over both repeats
             for uncert, gt in zip(uncertainty_measures, ground_truth):
-                stepwise_uncert_dev = []
-                # eval step_uncertainty
-                for step_uncertainty in uncert:
-                    ## Aufteilung je step in 0.8,0.6,0.5
-                    stepwise_uncert_dev.append(certainty_split(step_uncertainty, gt))
-                run_uncertainty.append(stepwise_uncert_dev)
+                run_uncertainty.append(certainty_split(uncert[len(uncert) - 1], gt))
 
             return run_uncertainty
 

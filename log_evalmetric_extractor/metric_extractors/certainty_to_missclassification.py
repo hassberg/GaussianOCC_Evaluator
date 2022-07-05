@@ -65,11 +65,7 @@ class UncertaintyMisclassificationCorrelation(EvalMetricExtractor):
             run_uncertainty = []
             # iterate over both repeats
             for uncert, gt in zip(uncertainty_measures, ground_truth):
-                stepwise_uncert_dev = []
-                # eval step_uncertainty
-                for step_uncertainty in uncert:
-                    stepwise_uncert_dev.append(get_certainty_fraction_split(step_uncertainty, gt, "GP"))
-                run_uncertainty.append(stepwise_uncert_dev)
+                run_uncertainty.append(get_certainty_fraction_split(uncert[len(uncert)-1], gt, "GP"))
 
             return run_uncertainty
 
@@ -79,12 +75,7 @@ class UncertaintyMisclassificationCorrelation(EvalMetricExtractor):
 
             run_uncertainty = []
             for uncert, gt in zip(uncertainty_measures, ground_truth):
-                stepwise_uncert_dev = []
-                # eval step_uncertainty
-                for step_uncertainty in uncert:
-                    ## Aufteilung je step in tp fp fn tn
-                    stepwise_uncert_dev.append(get_certainty_fraction_split(step_uncertainty, gt, "SVDD"))
-                run_uncertainty.append(stepwise_uncert_dev)
+                run_uncertainty.append(get_certainty_fraction_split(uncert[len(uncert)-1], gt, "SVDD"))
 
             return run_uncertainty
 
