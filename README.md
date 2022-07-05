@@ -1,5 +1,5 @@
 # LogEvaluation
-Execute file main.py to create output files. Two types of metrics are used - Single Model Metrics and Data Set Metrics. First only shows resutls fopr a single model with a singel Selection Criteria, while second one compares results for all used Models and Selection Criteria of a data set. 
+Execute file main.py to create output files. Two types of metrics are used - Single Model Metrics and Data Set Metrics. First only shows resutls for a single model with a singel Selection Criteria, while second one compares results for all used Models and Selection Criteria of a data set. 
 Each Metric as a defined "MOI", which specifies the Extractor, that has to be used in order to get results. If the Extractor is not applied, the metric won't be either.
 
 Output is either in .txt format, to derive a table or as a Figure, store as pdf.
